@@ -161,7 +161,7 @@ int rollDIce(void){
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-int usernum(int Pnum1,int Pnum2);
+int usernum(int Pnum1,int Pnum2,int *firstnum,int *secondnum);
 enum status{WIN,LOST,CONTINUE};
 int main(){
     srand(time(NULL));
@@ -172,16 +172,32 @@ int main(){
 
    numberToWin = 1 + rand() % 10;
 
-    total = usernum(firstnum,secondnum);
-
-    do{
-        usernum(firstnum,secondnum);
-        attempt++;
-    }while(attempt <= 5);
+    total = usernum();
     
-   return 0;
+    if(total == numberToWin){
+        gameStatus = WIN;
+    }
+    else if(attempt <= 5){
+        gameStatus = CONTINUE;
+    }
+    else{
+            gameStatus = LOST;
+    }
+
+    while(gameStatus == CONTINUE){
+        usernum();
+        attempt++;
+    }
+    switch(gameStatus){
+        case 0:
+        puts("you win");
+        break;
+        case 1:
+        puts("you lost");
+        break;
+    }
 }
-int usernum(int Pnum1,int Pnum2,int firstnum,int secondnum){
+int usernum(int Pnum1,int Pnum2,int *firstnum,int *secondnum){
     puts("please enter two numbers");
     scanf("%d%d",&Pnum1,&Pnum2);
     printf("number entered %d + %d = %d\n",Pnum1,Pnum2,Pnum1+Pnum2);
