@@ -17,7 +17,7 @@ int square(int y){ // need the correct data type to in the parameter and specifi
 }
 */
 
-// hw @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// hw @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ COMPLETED
 // return double foo in function prototype and print it with do while loop
 
 /*
@@ -147,9 +147,9 @@ int rollDIce(void){
 }
 */
 
-// hw @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+// hw @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Not complete
 
-// write a program that require user to enter 2 number that will be sum and comapre by a randomly generated value, if correct win
+// write a program require user to enter 2 number that will be sum and comapare by a randomly generated value, if correct win
 
 /* need what?? 
 ->> srand rand for generating random num
@@ -239,39 +239,42 @@ void useLocal(void);
 void useStaticLocal(void);
 void useGlobal(void);
 
-int x=1;
+int x=1; //global variable
 
 int main(void){
-    int x=5;
+    int x=5; //local variable to main
 
     printf("local x in outer scope of main is %5d\n",x);
 
-    {
+    { // start of a new scope
         int x=7;
 
         printf("local x in inner scpoe of main is %5d\n",x);
-    }
+    } // end of a new scope
 
     printf("local x in outer scpoe of main is %5d\n",x);
 
-    useLocal();
-    useStaticLocal();
-    useGlobal();
+    useLocal(); // useLocal has automatic local x
+    useStaticLocal(); // useStaticLocal has static local x
+    useGlobal(); // useGlobal uses global x
 
-    useLocal();
-    useStaticLocal();
-    useGlobal();
+    useLocal(); //useLocal reinitializes automatic local x
+    useStaticLocal(); //static local x retian sits prior value
+    useGlobal(); // global x also retains its value
 
     printf("\nlocal x in main is %5d\n",x);
 }
+// useLocal reinitializes local variable x during each call
 void useLocal(void){
-    int x=25;
+    int x=25; //initialized each time useLocal is called
 
     printf("\nlocal x in uselocal is %5d after entering useLocal\n",x);
     ++x;
     printf("local x in uselocal is %5d before exiting useLocal\n",x);
 }
 
+//useStaticLocal initializes static local variable x only the first time
+//the function is called; vlaue of x is saved between calls to this func
 void useStaticLocal(void){
     static int x = 50;
 
@@ -279,7 +282,7 @@ void useStaticLocal(void){
     ++x;
     printf("local x in useStaticlocal is %5d before exiting useLocal\n",x);
 }
-
+// func useGlobal modifies global vairable x during each call
 void useGlobal(void){
      printf("\nlocal x in useGlobal is %5d after entering useLocal\n",x);
     x *= 10;
