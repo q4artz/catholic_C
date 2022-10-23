@@ -23,6 +23,7 @@ int main(){
  the *yPtr dereference(decrypt) the mem address which return 5 (the value y)*/
 
 //~~~~~~~~~~~~~~~~~~~~~~~~  %p is printing for a pointer address ~~~~~~~~~~~~~~~~~~~~~~//
+/*
  #include <stdio.h>
  int main(){
     int a =7;
@@ -38,3 +39,52 @@ int main(){
     "each other\n&*aPtr = %p"
     "\n*&aPtr = %p \n",&*aPtr,*&aPtr);
  }
+*/
+
+// 7.4 Passing Arguement to Functions by Reference ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+/* there are two ways to pass arguements to a function 
+->> pass by value
+-- all arguements in C are passed by value
+->> pass by reference
+*/
+
+/* pass by value */
+
+/*
+#include <stdio.h>
+
+int cubeByValue(int n);
+int main(){
+    int number = 5;
+
+    printf("The original value of number is %d",number);
+
+    // pass number by value to cubeByValue
+    number = cubeByValue(number);
+
+    printf("\nThe new value of number is %d\n",number);
+}
+// calculate and return cube of integer arguement
+int cubeByValue(int n){
+    return n * n * n; //cube local variable n and return result 
+}
+*/
+
+#include<stdio.h>
+
+void cubeByReference(int *nPtr);
+int main(){
+    int number = 5;
+
+    printf("The original value of number is %d",number);
+
+    // pass address of number to cubeByReference
+    cubeByReference(&number);
+
+    printf("\n the new value of number is %d\n",number);
+}
+// calculate cube of *nPtr; actually modifies number in main
+void cubeByReference(int *nPtr){
+    *nPtr = *nPtr * *nPtr * *nPtr; // cube *nPtr
+}
