@@ -147,7 +147,7 @@ int rollDIce(void){
 }
 */
 
-// hw @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Not complete
+// hw @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ completed
 
 // write a program require user to enter 2 number that will be sum and comapare by a randomly generated value, if correct win
 
@@ -159,22 +159,23 @@ int rollDIce(void){
 ->> variable for num1 num2 total, random num
 */
 
-/*
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-int usernum(int Pnum1,int Pnum2,int *firstnum,int *secondnum);
+int usernum(int *Pnum1,int *Pnum2);
 enum status{WIN,LOST,CONTINUE};
 int main(){
     srand(time(NULL));
 
     enum status gameStatus;
-    int numberToWin,total;
+    int numberToWin,total,firstnum,secondnum;
     int attempt=1;
 
    numberToWin = 1 + rand() % 10;
+   printf("the number to win is %d\n",numberToWin);
 
-    total = usernum();
+    total = usernum(&firstnum,&secondnum);
     
     if(total == numberToWin){
         gameStatus = WIN;
@@ -187,7 +188,7 @@ int main(){
     }
 
     while(gameStatus == CONTINUE){
-        usernum();
+        usernum(&firstnum,&secondnum);
         attempt++;
     }
     switch(gameStatus){
@@ -197,17 +198,17 @@ int main(){
         case 1:
         puts("you lost");
         break;
+        case 2:
+        puts("you get to try again");
     }
 }
-int usernum(int Pnum1,int Pnum2,int *firstnum,int *secondnum){
+int usernum(int *Pnum1,int *Pnum2){
     puts("please enter two numbers");
-    scanf("%d%d",&Pnum1,&Pnum2);
-    printf("number entered %d + %d = %d\n",Pnum1,Pnum2,Pnum1+Pnum2);
-    firstnum = &Pnum1;
-    secondnum = &Pnum2;
-    return Pnum1 + Pnum2;
+    scanf("%d%d",&*Pnum1,&*Pnum2);
+    printf("number entered %d + %d = %d\n",*Pnum1,*Pnum2,*Pnum1+*Pnum2);
+    return *Pnum1 + *Pnum2;
 }
-*/
+
 
 // 5.12 Storage class ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~important
 /* there are 4 types of storage class, 
@@ -232,7 +233,7 @@ int usernum(int Pnum1,int Pnum2,int *firstnum,int *secondnum){
 
 // 5.13 Scope Rules ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
+/*
 #include <stdio.h>
 
 void useLocal(void);
@@ -288,3 +289,4 @@ void useGlobal(void){
     x *= 10;
     printf("local x in useGlobal is %5d before exiting useLocal\n",x);
 }
+*/
