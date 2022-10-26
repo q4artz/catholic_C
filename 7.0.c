@@ -22,6 +22,55 @@ int main(){
 /* RECAP ~ because we assign yPtr to the address of y, when we use the dereference operator *,
  the *yPtr dereference(decrypt) the mem address which return 5 (the value y)*/
 
+/*
+#include <stdio.h>
+int main(){
+    {
+    int b = 5;
+    int *a = &b;
+
+    printf("the b value is %d\n",b);
+    printf("the &b value is %d\n",&b);
+    printf("the a value is %d\n",a);
+    printf("the *a value is %d\n",*a);
+    printf("the &a value is %d\n",&a);
+    }
+
+    {
+        // the *a points to the address of b and modifying the value
+        // the address of a is the same as b
+
+        // *a is like a vector he impersonate b taking anything thrown
+        // at him and pass the thing to b
+        int b = 5;
+        int *a = &b;
+        *a = 50;
+
+        printf("\n\n");
+        printf("when *a is set to 50 we get \n");
+        printf("the b value is %d\n",b);
+        printf("the &b value is %d\n",&b);
+        printf("the a value is %d\n",a);
+        printf("the *a value is %d\n",*a);
+        printf("the &a value is %d\n",&a);
+    }
+
+    {
+        int b = 5;
+        int *a = &b;
+        a = 10;
+
+        printf("\n\n");
+        printf("when a is set to 10 we get\n");
+        printf("the b value is %d\n",b);
+        printf("the &b value is %d\n",&b);
+        printf("the a value is %d\n",a);
+        printf("the *a value is %d\n",*a);
+        printf("the &a value is %d\n",&a);
+    }
+}
+*/
+
 //~~~~~~~~~~~~~~~~~~~~~~~~  %p is printing for a pointer address ~~~~~~~~~~~~~~~~~~~~~~//
 /*
  #include <stdio.h>
@@ -71,6 +120,7 @@ int cubeByValue(int n){
 }
 */
 
+/*
 #include<stdio.h>
 
 void cubeByReference(int *nPtr);
@@ -88,3 +138,64 @@ int main(){
 void cubeByReference(int *nPtr){
     *nPtr = *nPtr * *nPtr * *nPtr; // cube *nPtr
 }
+*/
+
+// hw ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#include <stdio.h>
+int reference(int *i);
+int whileloop(int *o);
+int passtoA(int *b);
+int main(){
+    {
+    int j = 5;
+
+    printf("the value of j is %d\n",j);
+
+    reference(&j);
+
+    printf("the new value of j is %d\n",j);
+    }
+    {
+        int o = 10;
+        printf("\n\n");
+         printf("the value of o is %d\n",o);
+
+         whileloop(&o);
+
+         printf("the new value of o is %d\n",o);
+    }
+    {
+        int a = 2;
+        int *b = &a;
+
+        printf("\n\n");
+        printf("the value of a is %d\n",a);
+        printf("the address of &a is %d\n",&a);
+        printf("the address of *b is %d\n",*b);
+
+        passtoA(&a);
+
+        printf("\n\n");
+        printf("the new value of a is %d\n",a);
+        printf("the address of &a is %d\n",&a);
+        printf("the address of *b is %d\n",*b);
+    }
+}
+int reference(int *i){
+    for(*i = 1; *i <= 15;){
+        *i += *i ;
+    }
+    return *i;
+}
+int whileloop(int *k){
+    while(*k < 20){
+        *k += 1;
+    }
+    return *k;
+}
+int passtoA(int *b){
+    return *b += *b;
+}
+// 7.5 Using the const Qualifier with pointers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
