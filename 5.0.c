@@ -163,7 +163,9 @@ int rollDIce(void){
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#pragma warning(disable:4996);
 int usernum(int *Pnum1,int *Pnum2);
+int countatmp(int PtrAttempt);
 enum status{WIN,LOST,CONTINUE};
 int main(){
     srand(time(NULL));
@@ -174,23 +176,28 @@ int main(){
 
    numberToWin = 1 + rand() % 10;
    printf("the number to win is %d\n",numberToWin);
-
-    total = usernum(&firstnum,&secondnum);
+   
+   // due to the function being pass by pointer 
+   // we need to specify the address of firstnum and secnum so the 
+   // susamong us usernum() can do calculation and pass
+   // the value back to &firstnum and &secnum
     
-    if(total == numberToWin){
-        gameStatus = WIN;
-    }
-    else if(attempt <= 5){
-        gameStatus = CONTINUE;
-    }
-    else{
+    do{
+        countatmp(attempt);
+        total = usernum(&firstnum,&secondnum);
+        
+        if(total == numberToWin){
+            gameStatus = WIN;
+        }
+        else if(total != numberToWin && attempt < 3){
+            gameStatus = CONTINUE;
+            attempt++;   
+        }
+        else {
             gameStatus = LOST;
-    }
+        }
+    }while(gameStatus == CONTINUE);
 
-    while(gameStatus == CONTINUE){
-        usernum(&firstnum,&secondnum);
-        attempt++;
-    }
     switch(gameStatus){
         case 0:
         puts("you win");
@@ -198,8 +205,9 @@ int main(){
         case 1:
         puts("you lost");
         break;
-        case 2:
-        puts("you get to try again");
+        case 2 :
+        puts("");
+        break;
     }
 }
 int usernum(int *Pnum1,int *Pnum2){
@@ -207,6 +215,11 @@ int usernum(int *Pnum1,int *Pnum2){
     scanf("%d%d",&*Pnum1,&*Pnum2);
     printf("number entered %d + %d = %d\n",*Pnum1,*Pnum2,*Pnum1+*Pnum2);
     return *Pnum1 + *Pnum2;
+}
+int countatmp(int PtrAttempt){
+    printf("current attempt is %d\n",PtrAttempt);
+    PtrAttempt++;
+    return PtrAttempt;
 }
 
 

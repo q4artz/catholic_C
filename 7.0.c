@@ -142,6 +142,7 @@ void cubeByReference(int *nPtr){
 
 // hw ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+/*
 #include <stdio.h>
 int reference(int *i);
 int whileloop(int *o);
@@ -197,5 +198,41 @@ int whileloop(int *k){
 int passtoA(int *b){
     return *b += *b;
 }
+*/
+
+// !!!! More Function pointers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// PASS BY VALUE FUNCTION POINTER
+/*
+#include<stdio.h>
+int add(int a,int b);
+int main(){
+    int result;
+    int (*Ptr)(int,int) = &add;
+    result = (*Ptr)(10,20);
+    printf("the value of a plus b is %d\n",result);
+}
+int add(int a,int b){
+    return a + b;
+}
+*/
+
+// PASS BY VALUE ARRAY FUCNTION POINTER
+#include <stdio.h>
+int arr(int i);
+int main(){
+    int result;
+    int (*Ptr)[5];
+    result = (*Ptr[5]);
+    for (int j = 0 ;j <= 5; j++){
+    printf("array is now %d\n",result);
+    }
+}
+int arr(int i){
+    for (i=0;i<=5;i++){
+        return i;
+    }
+}
+
 // 7.5 Using the const Qualifier with pointers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
