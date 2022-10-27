@@ -217,11 +217,13 @@ int add(int a,int b){
 }
 */
 
-// PASS BY VALUE ARRAY FUCNTION POINTER
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ NOT COMPLETE
+// PASS BY VALUE ARRAY FUCNTION POINTER~~~~~~~~~~~~~~~~~~~~~~
 #include <stdio.h>
 int arr(int i);
 int main(){
     int result;
+    // we put () around the *Ptr so it has more priority than [5] array
     int (*Ptr)[5];
     result = (*Ptr[5]);
     for (int j = 0 ;j <= 5; j++){
@@ -230,9 +232,29 @@ int main(){
 }
 int arr(int i){
     for (i=0;i<=5;i++){
-        return i;
+        i += i;
     }
+    return i;
 }
+*/
 
+#include <stdio.h>
+#include <stdlib.h>
+int main(){
+    int *a;
+    int length = 0;
+
+    printf("enter a length\n");
+    scanf("%d",&length);
+
+    // malloc allocate memory to the condition
+    a = malloc(length *sizeof(int));
+    for (int i = 0; i< length; i++) 
+        a[i] = i;
+    for (int i=0;i<length;i++)
+        printf("a[%d] = %d\n",i,a[i]);
+
+    free(a);
+}
 // 7.5 Using the const Qualifier with pointers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
