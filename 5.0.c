@@ -189,7 +189,7 @@ int main(){
         if(total == numberToWin){
             gameStatus = WIN;
         }
-        else if(total != numberToWin && attempt < 3){
+        else if(attempt < 3){
             gameStatus = CONTINUE;
             attempt++;   
         }
