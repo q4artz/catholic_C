@@ -217,8 +217,8 @@ int add(int a,int b){
 }
 */
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ NOT COMPLETE
-// PASS BY VALUE ARRAY FUCNTION POINTER~~~~~~~~~~~~~~~~~~~~~~
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ NOT COMPLETE
+// PASS BY VALUE ARRAY FUCNTION POINTER~~~~~~~~~~~~~~
 #include <stdio.h>
 int arr(int i);
 int main(){
