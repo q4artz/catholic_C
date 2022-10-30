@@ -202,7 +202,7 @@ int passtoA(int *b){
 
 // !!!! More Function pointers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-// PASS BY VALUE FUNCTION POINTER
+// PASS BY VALUE FUNCTION POINTER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 /*
 #include<stdio.h>
 int add(int a,int b);
@@ -217,8 +217,8 @@ int add(int a,int b){
 }
 */
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ NOT COMPLETE
-// PASS BY VALUE ARRAY FUCNTION POINTER~~~~~~~~~~~~~~
+// PASS BY VALUE ARRAY FUCNTION POINTER ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ NOT COMPLETE
 #include <stdio.h>
 int arr(int i);
 int main(){
@@ -238,6 +238,8 @@ int arr(int i){
 }
 */
 
+// allocating memory space for an array length determided by user
+/*
 #include <stdio.h>
 #include <stdlib.h>
 int main(){
@@ -249,12 +251,136 @@ int main(){
 
     // malloc allocate memory to the condition
     a = malloc(length *sizeof(int));
-    for (int i = 0; i< length; i++) 
+    for (int i = 0; i< length; i++){
+    printf("a before : %d\n",a);
         a[i] = i;
+    }
     for (int i=0;i<length;i++)
         printf("a[%d] = %d\n",i,a[i]);
 
     free(a);
 }
+*/
+
+//
 // 7.5 Using the const Qualifier with pointers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+// 7.5.1 Converting a String to uppercase with ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Non const pointer to a non const data ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+/*
+->> granted highest level of data access 
+->> data can be modified through dereference pointer 
+->> pointer can be modified to point to other data items
+->> doesnt include const
+---------------------  USES -----------------------------------
+->> recieve a string as argument to func to process
+*/
+
+/*
+#include<stdio.h>
+#include<ctype.h>
+void convertToUppercase(char *sPtr);
+int main(){
+    char string[] = "cHaRaCters and $32.98";
+
+    printf("the string before conversion is %s",string);
+    // rmb no = is no &, got = use &
+    convertToUppercase(string);
+    printf("\n the string after conversion is : %s\n",string);
+}
+
+//converting string to uppercase letters
+void convertToUppercase(char *sPtr){
+    while(*sPtr != '\0'){  //current character is not '\0'
+        *sPtr = toupper(*sPtr); // convert to uppercase
+        ++sPtr; // make sPtr point to the next pointer
+    }
+}
+*/
+
+// 7.5.2 Non Constant Pointer to Constant Data ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+/*
+->> pointer can point any data of appropriate type 
+->> data being pointed cannot be modified
+-------------------- USES -------------------------------
+->> recieve an array argument to a func that will process 
+        but not modify the data/element
+->> passing data(as reference) in structure to a function
+    to reduce execution time overhead (not copy each data one by one)
+    ->> by this we had pointers to constant data to get the performance of pass-
+        by-reference and the protection of pass-by-value
+*/
+
+/*
+#include <stdio.h>
+// !!!! reads from right to left *sPtr is a char const
+// sPtr is a pointer to a character constant
+void printCharacter(const char *sPtr);
+int main(){
+    char string[] = "print charcter of a string";
+
+    puts("The string is: ");
+    printCharacter(string);
+    puts("");
+}
+void printCharacter(const char *sPtr){
+    // for loop no initialization cus we 
+    // dont want to modify the element/data
+    for(; *sPtr != '\0'; ++sPtr){ 
+        printf("%c",*sPtr);
+    }
+}
+*/
+
+// 7.5.3 Constant Pointer to Non Constant Data
+
+/*
+->> always points to the same memory location
+->> data at the location can be modify through pointer
+->> POINTER MUST be INITIALIZE when defined
+-------------------- USES ------------------------------------
+->> receive an array as an argument to a function
+    that accesses array elements using only array 
+    index notation
+*/
+
+/*
+#include <stdio.h>
+int main(){
+    int x,y;
+
+    // ptr is const pointer to an interger that can be modifired
+    // thorugh ptr, but ptr always points to the same memory location
+    int * const ptr = &x;
+
+    *ptr = 7; // allowed: *ptr is not const
+    ptr = &y; // error: ptr is const; cannot assign new address
+}
+*/
+
+// 7.5.4 Try to modify Constant Pointer to Constant Data
+
+/*
+->> least access privilage 
+->> pointer always points to the same memory location
+----------------------- USES --------------------------------
+->> how an array should be passed to a 
+    function that only looks at the array
+    using array index notation and
+    does not modify the array
+*/
+
+/*
+#include <stdio.h>
+int main(){
+    int x = 5,y;
+
+    const int * const ptr = &x; //initialization is OK
+
+    printf("%d\n",*ptr);
+    *ptr = 7; // error: *ptr is const; cannot assign nerw value
+    ptr = &y; // error: ptr is const; cannot assign new address
+}
+*/
