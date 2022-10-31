@@ -437,7 +437,7 @@ int main(){
 
 // 7.6 Bubble sort with Pass by Reference ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
+/*
 #include <stdio.h>
 #define SIZE 10
                  
@@ -482,4 +482,28 @@ void swap(int *element1Ptr,int *element2Ptr){
     int hold = *element1Ptr;
     *element1Ptr = *element2Ptr;
     *element2Ptr = hold;
+}
+*/
+
+// 7.7 sizeof Operator
+
+/*
+->> sizeof is compile-time operator
+*/
+#include <stdio.h>
+#define SIZE 20
+size_t getSize(float *ptr); // prototype
+
+int main(void)
+{
+float array[SIZE]; // create array
+
+printf("The number of bytes in the array is %u"
+    "\nThe number of bytes returned by getSize is %u\n",
+     sizeof(array) ,getSize(array) );
+    }
+// return size of ptr
+size_t getSize(float *ptr)
+{
+    return sizeof(ptr);
 }
