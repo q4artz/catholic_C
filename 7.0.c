@@ -334,6 +334,10 @@ void printCharacter(const char *sPtr){
 }
 */
 
+// useful resource to understand 
+// int const *ptr  &&  int * const ptr
+// https://stackoverflow.com/questions/21476869/constant-pointer-vs-pointer-to-constant
+
 // 7.5.3 Constant Pointer to Non Constant Data
 
 /*
@@ -382,5 +386,38 @@ int main(){
     printf("%d\n",*ptr);
     *ptr = 7; // error: *ptr is const; cannot assign nerw value
     ptr = &y; // error: ptr is const; cannot assign new address
+}
+*/
+
+// Extra const pointer ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~IMPORTANT
+
+// const to a pointer and pointer to a const
+
+/*
+#include <stdio.h>
+int main(){
+
+    int a = 5;
+    int b = 10;
+
+    //CANNOT change what the pointer is pointing to
+    //CAN change the value
+    int *const constant_pointer = &a;
+
+    //CAN
+    *constant_pointer = 10;
+
+    //CANNOT
+    // constant_pointer = &b;
+    
+    //CAN change what the pointer is pointing to
+    //CANNOT change the value
+    int const *pointer_to_constant_data = &a;
+
+    //CANNOT
+    // *pointer_to_constant_data = 10;
+
+    //CAN
+    pointer_to_constant_data = &b;
 }
 */
