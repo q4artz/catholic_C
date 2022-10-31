@@ -336,7 +336,6 @@ void printCharacter(const char *sPtr){
 
 // useful resource to understand 
 // int const *ptr  &&  int * const ptr
-// https://stackoverflow.com/questions/21476869/constant-pointer-vs-pointer-to-constant
 
 // 7.5.3 Constant Pointer to Non Constant Data
 
@@ -391,6 +390,8 @@ int main(){
 
 // Extra const pointer ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~IMPORTANT
 
+// https://stackoverflow.com/questions/21476869/constant-pointer-vs-pointer-to-constant
+
 // const to a pointer and pointer to a const
 
 /*
@@ -421,3 +422,14 @@ int main(){
     pointer_to_constant_data = &b;
 }
 */
+
+// SUMMARY
+
+//                                      Pointer           Value
+// Non-Const Pointer To Non-Const >>    Mutable           Mutable
+//
+// Non-Const Pointer To Non-Const >>    Mutable           Immutable
+//
+// Const Pointer To Non-Const >>        Immuutable        Mutable
+//
+// Const Pointer To Const >>           Immutable          Immutable
