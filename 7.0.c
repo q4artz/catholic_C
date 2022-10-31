@@ -402,7 +402,7 @@ int main(){
     int b = 10;
 
     //CANNOT change what the pointer is pointing to
-    //CAN change the value
+    //CAN change the value !!!!
     int *const constant_pointer = &a;
 
     //CAN
@@ -412,7 +412,7 @@ int main(){
     // constant_pointer = &b;
     
     //CAN change what the pointer is pointing to
-    //CANNOT change the value
+    //CANNOT change the value !!!!
     int const *pointer_to_constant_data = &a;
 
     //CANNOT
@@ -433,3 +433,53 @@ int main(){
 // Const Pointer To Non-Const >>        Immuutable        Mutable
 //
 // Const Pointer To Const >>           Immutable          Immutable
+
+
+// 7.6 Bubble sort with Pass by Reference ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+#include <stdio.h>
+#define SIZE 10
+                 
+                // *const array == data CAN change but memory CANNOT
+void bubbleSort(int *const array,const size_t size);
+
+int main(){
+    int a[SIZE] = {2,6,4,8,10,12,89,68,45,37};
+
+    puts("Data items in original order");
+
+    for(size_t i =0;i< SIZE; ++i){
+        printf("%4d",a[i]);
+    }
+
+    bubbleSort(a,SIZE);
+
+    puts("\nData items in ascending order");
+
+    for(size_t i = 0; i < SIZE; ++i){
+        printf("%4d",a[i]);
+    }
+    puts("");
+}
+void bubbleSort(int *const array,const size_t size)
+{
+    void swap(int *element1Ptr,int *element2Ptr);
+
+    // loop to control passes
+    for(unsigned int pass = 0;pass < size -1; ++pass){
+        
+        // loop to control passes
+        for(size_t j = 0; j<size -1; ++j){
+            // swap adjacent elements if they’re out of order
+            if(array[j] > array[j+1]){
+                swap(&array[j],&array[j+1]);
+            }
+        }
+    }
+}
+void swap(int *element1Ptr,int *element2Ptr){
+    int hold = *element1Ptr;
+    *element1Ptr = *element2Ptr;
+    *element2Ptr = hold;
+}
