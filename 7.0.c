@@ -490,6 +490,8 @@ void swap(int *element1Ptr,int *element2Ptr){
 /*
 ->> sizeof is compile-time operator
 */
+
+/*
 #include <stdio.h>
 #define SIZE 20
 size_t getSize(float *ptr); // prototype
@@ -507,3 +509,99 @@ size_t getSize(float *ptr)
 {
     return sizeof(ptr);
 }
+*/
+
+/*
+#include <stdio.h>
+int main(){
+    double real[20];
+
+    // print the whole byte size of array
+    printf("%d",sizeof(real));
+
+    //print one byte size of array 
+    printf("\n%d\n",sizeof(real[0]));
+
+    char c;
+    short s;
+    int i;
+    long l;
+    long long ll;
+    float f;
+    double d;
+    long double ld;
+    int array[20];
+    int *ptr = array;
+
+    printf(" sizeof c = %u\tsizeof(char) = %u"
+    "\n sizeof s = %u\tsizeof(short) = %u"
+    "\n sizeof i = %u\tsizeof(int) = %u"
+    "\n sizeof l = %u\tsizeof(long) = %u"
+    "\n sizeof ll = %u\tsizeof(long long) = %u"
+    "\n sizeof f = %u\tsizeof(float) = %u"
+    "\n sizeof d = %u\tsizeof(double) = %u"
+    "\n sizeof ld = %u\tsizeof(long double) = %u"
+    "\n sizeof array = %u"
+    "\n sizeof ptr = %u\n",
+    sizeof c, sizeof(char), sizeof s, sizeof(short), sizeof i,
+    sizeof(int), sizeof l, sizeof(long), sizeof ll,
+    sizeof(long long), sizeof f, sizeof(float), sizeof d,
+    sizeof(double), sizeof ld, sizeof(long double),
+    sizeof array, sizeof ptr);
+}
+*/
+
+// 7.8 Pointer epression and Pointer Arithmetic
+
+// 7.8.3 Adding an Integer to a pointer
+/*
+->> adding a int to a array pointer is 
+   (Memory_Location + int * 4(memory size of int))
+*/
+
+/*
+#include <stdio.h>
+int main(){
+    int v[20];
+    int *vPtr = v;
+    vPtr = &v;
+    printf("vPtr is >>      %d\n",vPtr);
+    vPtr += 2;
+    printf("vPtr += 2 is >> %d\n",vPtr);
+    vPtr += 2;
+    printf("vPtr += 4 is >> %d\n",vPtr);
+    vPtr -= 4;
+    printf("vPtr -= 4 is >> %d\n",vPtr);
+}
+*/
+
+// 7.8.6 subtracting one pointer from another
+
+/*
+->> DONOT subtract two pointer that dont refer to elements in the same array
+
+#include<stdio.h>
+int main(){
+    int arr[10];
+    int att[10];
+    int *Ptr1 = arr;
+    int *Ptr2 = arr;
+    int x = Ptr1 - Ptr2;
+    printf("%d",x);
+}
+*/
+
+// 7.8.7 Assigning pointer to one another
+
+/*
+->> pointer can assign to another pointer of the SAME TYPE
+*/
+
+// pointer to void
+
+/*
+->> void pointer cannot be dereferenced
+     (precise number of bytes which pointer     
+     refers is NOT KNOWN by compiler)
+->> cannot assign pointer to pointer if one is VOID
+*/
