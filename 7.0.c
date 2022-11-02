@@ -485,7 +485,7 @@ void swap(int *element1Ptr,int *element2Ptr){
 }
 */
 
-// 7.7 sizeof Operator
+// 7.7 sizeof Operator ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
 /*
 ->> sizeof is compile-time operator
@@ -551,7 +551,7 @@ int main(){
 }
 */
 
-// 7.8 Pointer epression and Pointer Arithmetic
+// 7.8 Pointer epression and Pointer Arithmetic ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // 7.8.3 Adding an Integer to a pointer
 /*
@@ -605,3 +605,45 @@ int main(){
      refers is NOT KNOWN by compiler)
 ->> cannot assign pointer to pointer if one is VOID
 */
+
+// 7.9 Relationship between Pointers and Arrays ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ IMPORTANT
+
+/*
+->> array name can be thought of as a const pointer
+
+        int b[5];
+        int *bPtr;
+
+        bPtr = b 
+    !!!! is the same as !!!!! 
+        bPtr = &b[0]
+
+    they both points to the first element  
+->> 
+*/
+
+// 7.9.1 Pointer/Offset Notation
+/*
+->> 
+*/
+
+#include<stdio.h>
+int main(){
+    int b[5];
+    int *bPtr;
+
+    bPtr = b;
+
+    printf("%d\n",bPtr);
+    // the 3 is the offset of the pointer
+    //need () because * has higher priority 
+    // if no () then 3 will add to bPtr[0]
+    {
+    *(bPtr + 3);
+    printf("%d\n",bPtr);
+    }
+    {
+        bPtr+3;
+        printf("%d\n",bPtr);
+    }
+}
