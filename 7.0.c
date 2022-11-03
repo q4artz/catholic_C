@@ -627,6 +627,7 @@ int main(){
 ->> 
 */
 
+/*
 #include<stdio.h>
 int main(){
     int b[5];
@@ -647,3 +648,47 @@ int main(){
         printf("%d\n",bPtr);
     }
 }
+*/
+
+// 7.9.4 Demonstrating pointer indexing and offsets 
+
+/*
+->> comparing array[i] and *arrPtr
+*/
+
+/*
+#include <stdio.h>
+#define ARRAY_SIZE 4
+int main(){
+    int b[] = {10,20,30,40};
+    int *bPtr = b;
+
+    puts("Array b printed with:\nArray index notation");
+
+    for(size_t i =0; i< ARRAY_SIZE; ++i){
+        printf("b[%u] = %d\n",i,b[i]);
+    }
+
+    puts("\nPointer/offset notation where\n"
+            "the pointer is array name");
+
+    for(size_t offset = 0;offset < ARRAY_SIZE; ++offset){
+        printf("*(b+%u) = %d\n ",offset,*(b+offset));
+    }
+
+    puts("\nPointer index notation");
+
+    for(size_t i = 0;i<ARRAY_SIZE;++i){
+        printf("bPtr[%u] = %d\n",i,bPtr[i]);
+    }
+
+    puts("\nPointer/offset notation");
+
+    for(size_t offset = 0;offset<ARRAY_SIZE; ++offset){
+        printf("*(bPtr + %u) = %d\n",offset,*(bPtr +offset));
+    }
+}
+*/
+
+// 7.9.5 String copying with array and pointers
+
