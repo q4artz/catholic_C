@@ -693,7 +693,7 @@ int main(){
 
 // 7.9.5 String copying with array and pointers
 
-/*
+
 #include <stdio.h>
 #define SIZE 10
 
@@ -724,11 +724,10 @@ void copy2(char *s1,const char *s2){
         ;
     }
 }
-*/
 
 // example ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Important notes
 
-
+/*
 #include <stdio.h>
 int main(){
     {
@@ -769,3 +768,4 @@ int main(){
     }
 
 }
+*/
