@@ -693,7 +693,7 @@ int main(){
 
 // 7.9.5 String copying with array and pointers
 
-
+/*
 #include <stdio.h>
 #define SIZE 10
 
@@ -715,6 +715,7 @@ int main(){
     printf("string3 = %s\n",string3);
 }
 void copy1(char *const s1, const char *const s2){
+    //check the string has \0 in it, if yes then the printing stops
     for(size_t i = 0; (s1[i]=s2[i]) != '\0'; ++i){
         ;
     }
@@ -724,6 +725,7 @@ void copy2(char *s1,const char *s2){
         ;
     }
 }
+*/
 
 // example ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Important notes
 
@@ -769,3 +771,4 @@ int main(){
 
 }
 */
+
