@@ -239,12 +239,13 @@ int arr(int i){
 */
 
 // allocating memory space for an array length determided by user
+
 /*
 #include <stdio.h>
 #include <stdlib.h>
 int main(){
     int *a;
-    int length = 0;
+    int length = ;
 
     printf("enter a length\n");
     scanf("%d",&length);
@@ -692,3 +693,79 @@ int main(){
 
 // 7.9.5 String copying with array and pointers
 
+/*
+#include <stdio.h>
+#define SIZE 10
+
+void copy1(char *const s1, const char *const s2);
+void copy2(char *s1, const char *s2);
+
+int main(){
+
+    char string1[SIZE];
+    char *string2 = "Hello";
+
+    copy1(string1,string2);
+    printf("string1 = %s\n",string1);
+
+    char string3[SIZE];
+    char string4[] = "Good Bye";
+
+    copy2(string3,string4);
+    printf("string3 = %s\n",string3);
+}
+void copy1(char *const s1, const char *const s2){
+    for(size_t i = 0; (s1[i]=s2[i]) != '\0'; ++i){
+        ;
+    }
+}
+void copy2(char *s1,const char *s2){
+    for(; (*s1 = *s2) != '\0';++s1 , ++s2){
+        ;
+    }
+}
+*/
+
+// example ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Important notes
+
+
+#include <stdio.h>
+int main(){
+    {
+        int array[5];
+
+        array[2] =  5;
+
+        // memory of first element ie. array[0]
+        printf("    array: %zu\n",array); 
+        printf("array +1 : %zu\n\n",array +1);
+
+        printf("   &array: %zu\n",&array);
+        // memory of the whole (array size * int)
+        // which is 5 * 4 == 20; 
+        printf("&array +1: %zu\n\n",&array+1);
+    }
+
+    {
+        int matrix[3][5] = {
+            {0,1,2,3,4,},
+            {5,6,7,8,9},
+            {10,11,12,13,14}
+        };
+
+        // memory of the first element of first row
+        printf("         matrix[1]: %zu\n",matrix[1]);
+        printf("    matrix[1] +1: %zu\n",matrix[1] +1);
+        printf(" *(matrix[1] +1): %zu\n",*(matrix[1] +1));
+        // memory of the entire first row
+        printf("\n       &matrix[1]: %zu\n",&matrix[1]);
+        printf("    &matrix[1] +1: %zu\n",&matrix[1] + 1);
+        printf(" *(&matrix[1] +1): %zu\n",*(&matrix[1] +1));
+
+        int *Ptr = (int*)(&matrix[1] + 1);
+
+        printf(" \npointer: %zu\n", Ptr);
+        printf("*pointer: %zu\n",*Ptr);
+    }
+
+}
