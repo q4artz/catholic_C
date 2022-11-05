@@ -772,6 +772,9 @@ int main(){
 }
 */
 
+// 7.11 card shuffling and Dealing Simulation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Extremely fun 
+
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -779,13 +782,16 @@ int main(){
 #define SUITS 4
 #define FACES 13
 #define CARDS 52
-void shuffle(unsigned int wDeck[][FACES]);
+void shuffle(unsigned int wDeck[][FACES]);  
+                                        // const char *Ptr (const pointer to char)
+                                        // mem can change data no change
 void deal(unsigned int wDeck[][FACES], const char *wFace[],const char *wSuit[]);
 int main(){
 
     unsigned int deck[SUITS][FACES] = {0};
 
     srand(time(NULL));
+
     shuffle(deck);
 
     const char *suit[SUITS] = 
@@ -801,26 +807,96 @@ int main(){
     return 0;
 }
 void shuffle(unsigned int wDeck[][FACES]){
+    // card is less than 52 , ++
     for(size_t card = 1; card <= CARDS; ++card){
         size_t row;
         size_t column;
 
+        //randomly  generate number until there is 0 found in both
         do{
             row = rand() % SUITS;
             column = rand() % FACES;
         }while(wDeck[row][column] != 0);
 
+        //if 0 is found on both arr, put number into it
         wDeck[row][column] = card;
     }
 }
 void deal(unsigned int wDeck[][FACES], const char *wFace[],const char *wSuit[]){
     for(size_t card = 1;card <= CARDS; ++card){
+        // loop row from wDeck
         for(size_t row = 0;row <SUITS; ++row){
+            // loop col of wDeck for current row
             for(size_t column = 0;column<FACES; ++column){
+
                 if(wDeck[row][column] == card){
-                    printf("%5s of %-8s%c",wFace[column],wSuit[row],card % 2 == 0 ? '\n' : '\t');
+                    printf("%5s of %-8s%c",wFace[column],wSuit[row]
+                        // 52 / 26 has 2 left so \n if is 0 then \t
+                    ,card % 2 == 0 ? '\n' : '\t');
                 }
             }
         }
     }
+}
+*/
+
+// 7.12 Pointers to Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+#include <stdio.h>
+#define SIZE 10
+
+void bubble(int work[],size_t size, int (*compare)(int a,int b));
+int ascending(int a,int b);
+int descending(int a, int b);
+
+int main(){
+    int a[SIZE] ={2,6,4,8,10,12,89,68,45,37};
+
+    printf("%s","Enter 1 to sort in ascending order,\n "
+            "Enter 2 t sort in descending order: ");
+
+    int order;
+    sscanf("%d",&order);
+
+    puts("\nData items in original order");
+
+    for(size_t counter = 0;counter < SIZE; ++counter){
+        printf("%5d",a[counter]);
+    }
+
+    if(order == 1){
+        bubble(a,SIZE,ascending);
+        puts("\nData tems in ascending order");
+    }
+    else{
+        bubble(a,SIZE,descending);
+        puts("\nData items in descending order");
+    }
+
+    for(size_t counter = 0;counter < SIZE;++counter){
+        printf("%5d",a[counter]);
+    }
+    puts("\n");
+}
+void bubble(int work[],size_t size, int (*compare)(int a,int b)){
+    void swap(int *element1Ptr, int *element2Ptr);
+
+    for(unsigned int pass=1; pass<size; ++size){
+        for(size_t count = 0; count < size-1; ++count){
+            if((*compare)(work[count],work[count+1])){
+                swap(&work[count],&work[count+1]);
+            }
+        }
+    }
+}
+ void swap(int *element1Ptr, int *element2Ptr){
+    int hold = *element1Ptr;
+    *element1Ptr = *element2Ptr;
+    *element2Ptr = hold;
+ }
+int ascending(int a,int b){
+    return b < a;
+}
+int descending(int a, int b){
+    return b > a;
 }
