@@ -955,6 +955,9 @@ bool freeze_C(int temperature){
     else 
         return false;
 }
+// fucntion accept a 
+//  pointer to a function
+// that accept int as argument and return BOOL
 void is_freezing(bool(*freeze_check)(int)){
     int temperature = 0 ;
     printf("enter temperature: ");
@@ -967,11 +970,12 @@ void is_freezing(bool(*freeze_check)(int)){
 }
 int main(){
 
-// --------------------------------------------------------------------------------------------------
+// -------------------Pointer to a function-------------------------------------------------------------------------------
     // a variable pointer (*addPtr) that points to a 
     // function with two double varaible
     // and return a double value
     double (*add_pointer)(double,double) = &add; //usd add also can
+    // double pointer variable that points to a function that recieve 2 double
 
     double a = 20;
     double b = 10;
@@ -979,22 +983,25 @@ int main(){
     double result = add_pointer(a,b);
     printf("result is: %.2f\n",result);
 
-// ---------------------------------------------------------------------------------------------------
+// ----------------------Arrays of pointer to function-----------------------------------------------------------------------------
 
     // an array pointer that 
         // >> takes two int data 
         // >> that points to 3 function
     int (*Array_Ptr[])(int,int) = {subtract,multiply,divide};
+    // array of pointer to function that accept 2 int arguement return interger
 
    int product = (*Array_Ptr[1])(3,15);
 
     printf("product: %d\n",product);
     
-// ------------------------------------------------------------------------------------------------------
+// ------------------Variable that is pointer to a function(accept 2 int, return 1 int)------------------------------------------------------------------------------------
 
     // a variable operation that point to a function that accept 2 int arguement 
     // return an int value
     int (*operation)(int,int) = select_operation();
+    // interger pointer to a function that recieve 2 interger arguement and return interger
+    // result of select_operation to *operation
 
     printf("answer: %d\n",operation(20,5));
 
