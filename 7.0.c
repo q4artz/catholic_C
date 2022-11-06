@@ -771,7 +771,6 @@ int main(){
 
 }
 */
-
 // 7.11 card shuffling and Dealing Simulation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Extremely fun 
 
 /*
@@ -842,6 +841,7 @@ void deal(unsigned int wDeck[][FACES], const char *wFace[],const char *wSuit[]){
 
 // 7.12 Pointers to Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 
+/*
 #include <stdio.h>
 #define SIZE 10
 
@@ -853,10 +853,10 @@ int main(){
     int a[SIZE] ={2,6,4,8,10,12,89,68,45,37};
 
     printf("%s","Enter 1 to sort in ascending order,\n "
-            "Enter 2 t sort in descending order: ");
+            "Enter 2 to sort in descending order: ");
 
     int order;
-    sscanf("%d",&order);
+    scanf("%d",&order);
 
     puts("\nData items in original order");
 
@@ -878,10 +878,11 @@ int main(){
     }
     puts("\n");
 }
+                                    // function pointer that points to a and b
 void bubble(int work[],size_t size, int (*compare)(int a,int b)){
     void swap(int *element1Ptr, int *element2Ptr);
 
-    for(unsigned int pass=1; pass<size; ++size){
+    for(unsigned int pass=1; pass<size; ++pass){
         for(size_t count = 0; count < size-1; ++count){
             if((*compare)(work[count],work[count+1])){
                 swap(&work[count],&work[count+1]);
@@ -889,7 +890,7 @@ void bubble(int work[],size_t size, int (*compare)(int a,int b)){
         }
     }
 }
- void swap(int *element1Ptr, int *element2Ptr){
+void swap(int *element1Ptr, int *element2Ptr){
     int hold = *element1Ptr;
     *element1Ptr = *element2Ptr;
     *element2Ptr = hold;
@@ -899,4 +900,108 @@ int ascending(int a,int b){
 }
 int descending(int a, int b){
     return b > a;
+}
+*/
+
+// function pointer examples ~~~~
+
+//  !!!!! Function pointers are function 
+//  to INSTRUCTION not DATA
+
+#include<stdio.h>
+#include <stdbool.h>
+double add(double x,double y){
+    return x + y;
+}
+int subtract(int x,int y){
+    return x - y;
+}
+int multiply(int x,int y){
+    return x * y;
+}
+int divide(int x,int y){
+    return x / y;
+}
+//fucntion that return pointer to a function
+//(*select_operation()) is a function but is a pointer to another function
+// it return a pointer to a function that accept 2 int arguement and return int value
+int (*select_operation())(int,int){
+    int option = 0;
+    printf("select an operation\n");
+    printf("1: subtract\n");
+    printf("2: multiply\n");
+    printf("3: divide\n");
+    printf("enter: ");
+    scanf("%d",&option);
+
+    if(option == 1)
+        return subtract;
+    else if (option == 2) 
+        return multiply;
+    else if(option == 3)
+        return divide;
+    else 
+        return NULL;
+}
+bool freeze_F(int temperature){
+    if (temperature <= 0) 
+        return true;
+    else 
+        return false;
+}
+bool freeze_C(int temperature){
+    if (temperature <= 32) 
+        return true;
+    else 
+        return false;
+}
+void is_freezing(bool(*freeze_check)(int)){
+    int temperature = 0 ;
+    printf("enter temperature: ");
+    scanf("%d",&temperature);
+
+    if(freeze_check(temperature))
+        printf("Its freezing\n");
+    else
+        printf("its not freezing\n");
+}
+int main(){
+
+// --------------------------------------------------------------------------------------------------
+    // a variable pointer (*addPtr) that points to a 
+    // function with two double varaible
+    // and return a double value
+    double (*add_pointer)(double,double) = &add; //usd add also can
+
+    double a = 20;
+    double b = 10;
+
+    double result = add_pointer(a,b);
+    printf("result is: %.2f\n",result);
+
+// ---------------------------------------------------------------------------------------------------
+
+    // an array pointer that 
+        // >> takes two int data 
+        // >> that points to 3 function
+    int (*Array_Ptr[])(int,int) = {subtract,multiply,divide};
+
+   int product = (*Array_Ptr[1])(3,15);
+
+    printf("product: %d\n",product);
+    
+// ------------------------------------------------------------------------------------------------------
+
+    // a variable operation that point to a function that accept 2 int arguement 
+    // return an int value
+    int (*operation)(int,int) = select_operation();
+
+    printf("answer: %d\n",operation(20,5));
+
+// -----------------------------------------------------------------------------------------
+
+    //
+    printf("\nCelsius... \n\n");
+    is_freezing(freeze_C);
+    is_freezing(freeze_C); 
 }
