@@ -903,7 +903,7 @@ int descending(int a, int b){
 }
 */
 
-// function pointer examples ~~~~
+// function pointer examples ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //  !!!!! Function pointers are function 
 //  to INSTRUCTION not DATA
