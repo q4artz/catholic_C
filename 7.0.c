@@ -6,21 +6,25 @@
 // * is a dereference/indirection operator
 
 /*
+->> y get 5
+->> &y get the mem address of y
+->> yPtr get mem address of y
+->> *yPtr get 5
+*/
+/*
 #include <stdio.h>
 int main(){
     int y = 5;
     int *yPtr;
     yPtr = &y; // this yPtr variable has the address of y
     printf("y is %d\n&y is %d\nyPtr is %d\n*yPtr is %d\n",y,&y,yPtr,*yPtr);
-    // y get 5
-    // &y get the mem address of y
-    // yPtr get mem address of y
-    // *yPtr get 5
 }
 */
 
-/* RECAP ~ because we assign yPtr to the address of y, when we use the dereference operator *,
- the *yPtr dereference(decrypt) the mem address which return 5 (the value y)*/
+/* 
+->> RECAP ~ because we assign yPtr to the address of y, 
+    when we use the dereference operator *,
+    the *yPtr dereference(decrypt) the mem address which return 5 (the value y)*/
 
 /*
 #include <stdio.h>
@@ -217,28 +221,7 @@ int add(int a,int b){
 }
 */
 
-// PASS BY VALUE ARRAY FUCNTION POINTER ~~~~~~~~~~~~~~~~~~~~~~~~~~
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ NOT COMPLETE
-#include <stdio.h>
-int arr(int i);
-int main(){
-    int result;
-    // we put () around the *Ptr so it has more priority than [5] array
-    int (*Ptr)[5];
-    result = (*Ptr[5]);
-    for (int j = 0 ;j <= 5; j++){
-    printf("array is now %d\n",result);
-    }
-}
-int arr(int i){
-    for (i=0;i<=5;i++){
-        i += i;
-    }
-    return i;
-}
-*/
-
-// allocating memory space for an array length determided by user
+// allocating memory space for an array length determided by user ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Future topic
 
 /*
 #include <stdio.h>
@@ -845,6 +828,10 @@ void deal(unsigned int wDeck[][FACES], const char *wFace[],const char *wSuit[]){
 #include <stdio.h>
 #define SIZE 10
 
+// function that has recieve
+// ->> array interger
+// ->> unknown size int
+// ->> function that is a pointer to a function that recieve 2 int and return an int 
 void bubble(int work[],size_t size, int (*compare)(int a,int b));
 int ascending(int a,int b);
 int descending(int a, int b);
@@ -878,13 +865,20 @@ int main(){
     }
     puts("\n");
 }
-                                    // function pointer that points to a and b
+                // function pointer that points a func that recieve 2 int
 void bubble(int work[],size_t size, int (*compare)(int a,int b)){
     void swap(int *element1Ptr, int *element2Ptr);
 
     for(unsigned int pass=1; pass<size; ++pass){
         for(size_t count = 0; count < size-1; ++count){
+            
+            // function that is a pointer to another func
+            // that recieve 2 int value
+            // check if adjacent elements are out of order,if yes swap them
             if((*compare)(work[count],work[count+1])){
+
+                // pass memory address recieved from (*compare)(int,int)
+                // to swap function
                 swap(&work[count],&work[count+1]);
             }
         }
@@ -903,11 +897,12 @@ int descending(int a, int b){
 }
 */
 
-// function pointer examples ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// function pointer examples ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Important !
 
 //  !!!!! Function pointers are function 
 //  to INSTRUCTION not DATA
 
+/*
 #include<stdio.h>
 #include <stdbool.h>
 double add(double x,double y){
@@ -943,6 +938,7 @@ int (*select_operation())(int,int){
     else 
         return NULL;
 }
+// ---------------------------------------------------------------------------------------- //
 bool freeze_F(int temperature){
     if (temperature <= 0) 
         return true;
@@ -968,6 +964,7 @@ void is_freezing(bool(*freeze_check)(int)){
     else
         printf("its not freezing\n");
 }
+// ------------------------------------------------------------------------------------ //
 int main(){
 
 // -------------------Pointer to a function-------------------------------------------------------------------------------
@@ -1007,8 +1004,11 @@ int main(){
 
 // -----------------------------------------------------------------------------------------
 
-    //
+    // pass though function type must be same as freeze_check
+    // cus the is_freezing function has a pointer
+    // function that points to other function with the type bool
     printf("\nCelsius... \n\n");
     is_freezing(freeze_C);
     is_freezing(freeze_C); 
 }
+*/
