@@ -19,11 +19,11 @@ void Board(){
     printf("  %c | %c  | %c  ",board[2][0],board[2][1],board[2][2]);
     printf("\n");
 }
-void ResetBoard(unsigned board[3][3]){
-    size_t board[3][3];
+int ResetBoard(int board[3][3]){
+    int wboard[3][3];
     for(size_t i=0; i<3; i++){
         for(size_t j=0; j<3; j++){
-            puts(" ");
+          return board[i][j] = ' ';
         }
     }
 }
@@ -40,6 +40,7 @@ int main(){
         puts("You win!");
         return 0;
     }
+
     else{
         if(GameStatus == 1){
            ResetBoard();
