@@ -7,3 +7,6 @@ chapters to complete
 - 9 formatted input and output
 - 10 struct,unions, bit manipulation, enum
 - 11 file processing
+--------------------------------------------------
+small projects
+- tic tac toe -start(9/11/2022)
