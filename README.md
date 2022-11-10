@@ -9,4 +9,4 @@ chapters to complete
 - 11 file processing
 --------------------------------------------------
 small projects
-- tic tac toe -start(9/11/2022)
+- tac.c -start(9/11/2022)
