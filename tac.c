@@ -10,6 +10,8 @@ Need what?
 #include <ctype.h>
 #include <time.h>
 #include <stdbool.h>
+// prints the main 3x3 board
+// affected by ResetBoard() , CheckFreeSpaces() ,  UserInput(), ComInput();
 void Board(){
     int board[3][3];
     printf("  %c |  %c | %c ",board[0][0],board[0][1],board[0][2]);
@@ -19,17 +21,30 @@ void Board(){
     printf("  %c | %c  | %c  ",board[2][0],board[2][1],board[2][2]);
     printf("\n");
 }
-int ResetBoard(int board[3][3]){
+// affected by checkFreeSpaces() , GameCondition
+void ResetBoard(int board[3][3]){
     int wboard[3][3];
     for(size_t i=0; i<3; i++){
         for(size_t j=0; j<3; j++){
-          return board[i][j] = ' ';
+         board[i][j] = ' ';
         }
     }
 }
+// affected by GameCondition
 int StartGame(bool(*GameCondition)(int));
+//affected by ResetBoard() , Board();
 int checkFreeSpaces();
-int UserInput(int *const row,int *const column);
+int UserInput(int *const row,int *const column){
+    const char PLAYER = 'X';
+    int wRow,wColumn;
+    
+    printf("Please enter a row: ");
+    scanf("%d",&wRow);
+    wRow--;
+    printf("Please enter a  column ");
+    scanf("%d",&wColumn);
+    wColumn--;
+}
 int ComInput(int const *row,int const *column);
 int main(){
 
