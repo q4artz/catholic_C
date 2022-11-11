@@ -12,7 +12,7 @@ Need what?
 #include <stdbool.h>
 // prints the main 3x3 board
 // affected by ResetBoard() , CheckFreeSpaces() ,  UserInput(), ComInput();
-void Board(){
+int Board(){
     int board[3][3];
     printf("  %c |  %c | %c ",board[0][0],board[0][1],board[0][2]);
     printf("\n ---|----|---|\n");
@@ -34,22 +34,34 @@ void ResetBoard(int board[3][3]){
 int StartGame(bool(*GameCondition)(int));
 //affected by ResetBoard() , Board();
 int checkFreeSpaces();
-int UserInput(int *const row,int *const column){
+int UserInput(int *const PlayerRow,int *const PlayerColumn){
+    int board();
+    int wboard[3][3];
     const char PLAYER = 'X';
     int wRow,wColumn;
     
+    do{
     printf("Please enter a row: ");
     scanf("%d",&wRow);
     wRow--;
     printf("Please enter a  column ");
     scanf("%d",&wColumn);
     wColumn--;
+
+    if(wboard[wRow][wColumn] != ' '){
+        puts("error");
+    }
+    else{
+        wboard[wRow][wColumn] = PLAYER;
+    }
+
+    }while(wboard[wRow][wColumn]);
 }
-int ComInput(int const *row,int const *column);
+int ComInput(int const *ComRow,int const *ComColumn);
 int main(){
 
     // 0 == win , 1 == Lose , 2 == Draw ;
-    int GameStatus;
+    int GameStatus = 1;
 
     if(GameStatus == 0){
         puts("You win!");
@@ -58,8 +70,10 @@ int main(){
 
     else{
         if(GameStatus == 1){
-           ResetBoard();
+          
            Board();
+           UserInput(int *const PlayerRow, int *const PlayerColumn);
+           
         }
     }
 
