@@ -12,7 +12,7 @@ Need what?
 #include <stdbool.h>
 // prints the main 3x3 board
 // affected by ResetBoard() , CheckFreeSpaces() ,  UserInput(), ComInput();
-int Board(){
+int Board(int){
     int board[3][3];
     printf("  %c |  %c | %c ",board[0][0],board[0][1],board[0][2]);
     printf("\n ---|----|---|\n");
@@ -35,8 +35,8 @@ int StartGame(bool(*GameCondition)(int));
 //affected by ResetBoard() , Board();
 int checkFreeSpaces();
 int UserInput(int *const PlayerRow,int *const PlayerColumn){
-    int board();
-    int wboard[3][3];
+    int board(wboard);
+    int *wboard[3][3] = &board[3][3];
     const char PLAYER = 'X';
     int wRow,wColumn;
     
@@ -71,8 +71,7 @@ int main(){
     else{
         if(GameStatus == 1){
           
-           Board();
-           UserInput(int *const PlayerRow, int *const PlayerColumn);
+           Board(int);
            
         }
     }
