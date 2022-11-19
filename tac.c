@@ -61,7 +61,7 @@ int ComInput(int const *ComRow,int const *ComColumn);
 int main(){
 
     // 0 == win , 1 == Lose , 2 == Draw ;
-    int GameStatus = 0;
+    int GameStatus = 1;
 
     if(GameStatus == 0){
         puts("You win!");
