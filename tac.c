@@ -71,7 +71,6 @@ int main(){
     else{
         if(GameStatus == 1){
           
-           Board(int);
            
         }
     }
