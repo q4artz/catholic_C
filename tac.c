@@ -7,12 +7,11 @@ Need what?
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include <time.h>
 #include <stdbool.h>
 // prints the main 3x3 board
 // affected by ResetBoard() , CheckFreeSpaces() ,  UserInput(), ComInput();
-int Board(int PtrBoard){
+void Board(int PtrBoard){
     int board[3][3];
     printf("  %c |  %c | %c ",board[0][0],board[0][1],board[0][2]);
     printf("\n ---|----|---|\n");
@@ -22,7 +21,7 @@ int Board(int PtrBoard){
     printf("\n");
 }
 // get 
-int PtrBoard(int *PlayerRow,int *PLayerCol){
+void PtrBoard(int *PlayerRow,int *PLayerCol){
     int board[3][3];
 }
 // affected by checkFreeSpaces() , GameCondition
@@ -39,14 +38,24 @@ int StartGame(bool(*GameCondition)(int));
 //affected by ResetBoard() , Board();
 int checkFreeSpaces();
 
-// print scan in main , data pass to UserInput, UserInput pass to int PtrBoard()
-int UserInput(int *const PlayerRow,int *const PlayerColumn){
-    int board(wboard);
-    int *wboard[3][3] = &board[3][3];
+// print scanf in main , data pass to UserInput, UserInput pass to int PtrBoard()
+void UserInput(int *const PlayerRow,int *const PlayerColumn){
+    int *wboard[3][3];
     const char PLAYER = 'X';
     int wRow,wColumn;
     
-    
+    do{
+    *PlayerRow -= 1;
+    *PlayerColumn -= 1;
+
+    if(wboard[wRow][wColumn] != ' '){
+        puts("error");
+    }
+    else{
+        wboard[wRow][wColumn] = PLAYER;
+    }
+
+    }while(wboard[wRow][wColumn]);
 }
 int ComInput(int const *ComRow,int const *ComColumn);
 int main(){
@@ -61,25 +70,13 @@ int main(){
     }
 
     else{
-        if(GameStatus == 1){
+        while(GameStatus != 0){
+          printf("Please enter a row: ");
+          scanf("%d",&row);
+          printf("Please enter a  column ");
+          scanf("%d",&col);
 
-          do{
-    printf("Please enter a row: ");
-    scanf("%d",&wRow);
-    wRow--;
-    printf("Please enter a  column ");
-    scanf("%d",&wColumn);
-    wColumn--;
-
-    if(wboard[wRow][wColumn] != ' '){
-        puts("error");
-    }
-    else{
-        wboard[wRow][wColumn] = PLAYER;
-    }
-
-    }while(wboard[wRow][wColumn]);
-          UserInput(int *const PlayerRow, int *const PlayerColumn);
+          UserInput(&row,&col);
            
         }
     }
