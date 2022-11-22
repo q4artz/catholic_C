@@ -9,4 +9,5 @@ chapters to complete
 - 11 file processing
 --------------------------------------------------
 small projects
+- 7.6_twist.c -done(30/10/22)
 - tac.c -start(9/11/2022)
