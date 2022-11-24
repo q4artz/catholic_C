@@ -26,7 +26,7 @@ void PtrBoard(int *PlayerRow,int *PlayerColumn){
     const char PLAYER = 'X';
 }
 // runs first ; reset Board();
-void ResetBoard(int board[3][3]){
+int ResetBoard(int board[3][3]){
     int wboard[3][3];
     for(size_t i=0; i<3; i++){
         for(size_t j=0; j<3; j++){
@@ -43,7 +43,7 @@ int checkFreeSpaces();
 // UserInput() pass to int PtrBoard();
 void UserInput(int *const PlayerRow,int *const PlayerColumn){
     void PtrBoard(int *PlayerRow,int *PlayerColumn);
-    int *wboard[3][3];
+    int wboard[3][3];
     
     do{
     /*
@@ -57,7 +57,7 @@ void UserInput(int *const PlayerRow,int *const PlayerColumn){
         PtrBoard(PlayerRow,PlayerColumn);
     }
 
-    }while(wboard[PlayerRow][PlayerColumn]);
+    }while(wboard[*PlayerRow][*PlayerColumn] );
 }
 int ComInput(int const *ComRow,int const *ComColumn);
 int main(){
