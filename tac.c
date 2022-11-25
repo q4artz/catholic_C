@@ -2,14 +2,12 @@
 Need what?
 ->> player,winner,loser,computer
 ->> board,turns(do while)
-->> 
 */
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
-// prints the main 3x3 board
 // affected by ResetBoard() , CheckFreeSpaces() ,  UserInput(), ComInput();
 void Board(int PtrBoard){
     int board[3][3];
