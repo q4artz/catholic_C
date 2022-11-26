@@ -1,15 +1,10 @@
-/*
-Need what?
-->> player,winner,loser,computer
-->> board,turns(do while)
-*/
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
 // affected by ResetBoard() , CheckFreeSpaces() ,  UserInput(), ComInput();
-void Board(int PtrBoard){
+void Board(){
     int board[3][3];
     printf("  %c |  %c | %c ",board[0][0],board[0][1],board[0][2]);
     printf("\n ---|----|---|\n");
@@ -19,12 +14,14 @@ void Board(int PtrBoard){
     printf("\n");
 }
 // get data from UserInput() and ComInput() and sent to Board();
-void PtrBoard(int *PlayerRow,int *PlayerColumn){
-    int board[3][3];
+void PtrBoard(unsigned int *PLayerMove[],int *ComMove){
+    int row,col;
+    int board[row][col];
     const char PLAYER = 'X';
+
 }
 // runs first ; reset Board();
-int ResetBoard(int board[3][3]){
+void ResetBoard(int board[3][3]){
     int wboard[3][3];
     for(size_t i=0; i<3; i++){
         for(size_t j=0; j<3; j++){
@@ -40,7 +37,7 @@ int checkFreeSpaces();
 // get data from main() , data from main() pass to UserInput(), 
 // UserInput() pass to int PtrBoard();
 void UserInput(int *const PlayerRow,int *const PlayerColumn){
-    void PtrBoard(int *PlayerRow,int *PlayerColumn);
+    void PtrBoard(int *PlayerRow[][],int *PlayerColumn);
     int wboard[3][3];
     
     do{
@@ -52,7 +49,7 @@ void UserInput(int *const PlayerRow,int *const PlayerColumn){
         puts("error");
     }
     else{
-        PtrBoard(PlayerRow,PlayerColumn);
+        PtrBoard(&wboard[*PlayerRow][*PlayerColumn]);
     }
 
     }while(wboard[*PlayerRow][*PlayerColumn] );
@@ -63,6 +60,7 @@ int main(){
     // 0 == win , 1 == Lose , 2 == Draw ;
     int GameStatus = 1;
     int row,col;
+    void Board();
 
     if(GameStatus == 0){
         puts("You win!");
@@ -70,6 +68,7 @@ int main(){
     }
 
     else{
+        ResetBoard();
         while(GameStatus != 0){
           printf("Please enter a row: ");
           scanf("%d",&row);
