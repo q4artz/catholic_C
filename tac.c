@@ -6,11 +6,11 @@
 // affected by ResetBoard() , CheckFreeSpaces() ,  UserInput(), ComInput();
 void Board(){
     int MainBoard[3][3];
-    printf("  %c |  %c | %c ",MainBoard[0][0],board[0][1],board[0][2]);
+    printf("  %c |  %c | %c ",MainBoard[0][0],MainBoard[0][1],MainBoard[0][2]);
     printf("\n ---|----|---|\n");
-    printf("  %c | %c  | %c ",board[1][0],board[1][1],board[1][2]);
+    printf("  %c | %c  | %c ",MainBoard[1][0],MainBoard[1][1],MainBoard[1][2]);
     printf("\n ---|----|---|\n");
-    printf("  %c | %c  | %c  ",board[2][0],board[2][1],board[2][2]);
+    printf("  %c | %c  | %c  ",MainBoard[2][0],MainBoard[2][1],MainBoard[2][2]);
     printf("\n");
 }
 // get data from UserInput() and ComInput() and sent to Board();
@@ -46,7 +46,7 @@ void UserInput(int *const PlayerRowInput,int *const PlayerColumnInput){
     *PlayerColumn -= 1;
     */
     if(Passboard[*PlayerRowInput][*PlayerColumnInput] != ' '){
-        puts("error");
+        puts("Player Input Error");
     }
     else{
         PtrBoard(&Passboard[*PlayerRowInput][*PlayerColumnInput]);
@@ -54,12 +54,12 @@ void UserInput(int *const PlayerRowInput,int *const PlayerColumnInput){
 
     }while(Passboard[*PlayerRowInput][*PlayerColumnInput] );
 }
-int ComInput(int const *ComRow,int const *ComColumn);
+int ComInput(int const *ComRowGenerate,int const *ComColumnGenerate);
 int main(){
 
     // 0 == win , 1 == Lose , 2 == Draw ;
     int GameStatus = 1;
-    int row,col;
+    int UserInputRowMain,UserInputColMain;
     void Board();
 
     if(GameStatus == 0){
@@ -71,13 +71,13 @@ int main(){
         ResetBoard();
         while(GameStatus != 0){
           printf("Please enter a row: ");
-          scanf("%d",&row);
-          row--;
+          scanf("%d",&UserInputRowMain);
+          UserInputRowMain--;
           printf("Please enter a  column ");
-          scanf("%d",&col);
-          col--;
+          scanf("%d",&UserInputColMain);
+          UserInputColMain--;
 
-          UserInput(&row,&col);
+          UserInput(&UserInputRowMain,&UserInputColMain);
            
         }
     }
