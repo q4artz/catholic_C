@@ -5,8 +5,8 @@
 #include <stdbool.h>
 // affected by ResetBoard() , CheckFreeSpaces() ,  UserInput(), ComInput();
 void Board(){
-    int board[3][3];
-    printf("  %c |  %c | %c ",board[0][0],board[0][1],board[0][2]);
+    int MainBoard[3][3];
+    printf("  %c |  %c | %c ",MainBoard[0][0],board[0][1],board[0][2]);
     printf("\n ---|----|---|\n");
     printf("  %c | %c  | %c ",board[1][0],board[1][1],board[1][2]);
     printf("\n ---|----|---|\n");
@@ -14,7 +14,7 @@ void Board(){
     printf("\n");
 }
 // get data from UserInput() and ComInput() and sent to Board();
-void PtrBoard(unsigned int *PLayerMove[],int *ComMove){
+void PtrBoard(int *PLayerMove[],int *ComMove){
     int row,col;
     int board[row][col];
     const char PLAYER = 'X';
@@ -23,9 +23,9 @@ void PtrBoard(unsigned int *PLayerMove[],int *ComMove){
 // runs first ; reset Board();
 void ResetBoard(int board[3][3]){
     int wboard[3][3];
-    for(size_t i=0; i<3; i++){
-        for(size_t j=0; j<3; j++){
-         board[i][j] = ' ';
+    for(size_t RowCount=0; RowCount<3; RowCount++){
+        for(size_t ColumnCount=0; ColumnCount<3; ColumnCount++){
+         board[RowCount][ColumnCount] = ' ';
         }
     }
 }
@@ -36,23 +36,23 @@ int checkFreeSpaces();
 
 // get data from main() , data from main() pass to UserInput(), 
 // UserInput() pass to int PtrBoard();
-void UserInput(int *const PlayerRow,int *const PlayerColumn){
-    void PtrBoard(int *PlayerRow[][],int *PlayerColumn);
-    int wboard[3][3];
+void UserInput(int *const PlayerRowInput,int *const PlayerColumnInput){
+    void PtrBoard(int *PlayerRow[],int *PlayerColumn);
+    int Passboard[3][3];
     
     do{
     /*
     *PlayerRow -= 1;
     *PlayerColumn -= 1;
     */
-    if(wboard[*PlayerRow][*PlayerColumn] != ' '){
+    if(Passboard[*PlayerRowInput][*PlayerColumnInput] != ' '){
         puts("error");
     }
     else{
-        PtrBoard(&wboard[*PlayerRow][*PlayerColumn]);
+        PtrBoard(&Passboard[*PlayerRowInput][*PlayerColumnInput]);
     }
 
-    }while(wboard[*PlayerRow][*PlayerColumn] );
+    }while(Passboard[*PlayerRowInput][*PlayerColumnInput] );
 }
 int ComInput(int const *ComRow,int const *ComColumn);
 int main(){
