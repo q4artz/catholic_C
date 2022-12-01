@@ -36,7 +36,7 @@ int checkFreeSpaces();
 
 // get data from main() , data from main() pass to UserInput(), 
 // UserInput() pass to int PtrBoard();
-void UserInput(int *const PlayerRowInput,int *const PlayerColumnInput){
+void UserInput(int *const PtrPlayerRowInput,int *const PtrPlayerColInput){
     void PtrBoard(int *PlayerRow[],int *PlayerColumn);
     int Passboard[3][3];
     
@@ -45,14 +45,14 @@ void UserInput(int *const PlayerRowInput,int *const PlayerColumnInput){
     *PlayerRow -= 1;
     *PlayerColumn -= 1;
     */
-    if(Passboard[*PlayerRowInput][*PlayerColumnInput] != ' '){
+    if(Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] != ' '){
         puts("Player Input Error");
     }
     else{
-        PtrBoard(&Passboard[*PlayerRowInput][*PlayerColumnInput]);
+        PtrBoard(&Passboard[*PtrPlayerRowInput][*PtrPlayerColInput]);
     }
 
-    }while(Passboard[*PlayerRowInput][*PlayerColumnInput] );
+    }while(Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] );
 }
 int ComInput(int const *ComRowGenerate,int const *ComColumnGenerate);
 int main(){
