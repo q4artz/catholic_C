@@ -14,18 +14,18 @@ void Board(){
     printf("\n");
 }
 // get data from UserInput() and ComInput() and sent to Board();
-void PtrBoard(int *PLayerMove[],int *ComMove){
+void PtrBoard(int *PLayerMoveRow,int *PlayerMoveCol){
     int row,col;
     int board[row][col];
     const char PLAYER = 'X';
 
 }
 // runs first ; reset Board();
-void ResetBoard(int board[3][3]){
+void ResetBoard(){
     int wboard[3][3];
     for(size_t RowCount=0; RowCount<3; RowCount++){
         for(size_t ColumnCount=0; ColumnCount<3; ColumnCount++){
-         board[RowCount][ColumnCount] = ' ';
+         wboard[RowCount][ColumnCount] = ' ';
         }
     }
 }
@@ -36,9 +36,10 @@ int checkFreeSpaces();
 
 // get data from main() , data from main() pass to UserInput(), 
 // UserInput() pass to int PtrBoard();
-void UserInput(int *const PtrPlayerRowInput,int *const PtrPlayerColInput){
-    void PtrBoard(int *PlayerRow[],int *PlayerColumn);
-    int Passboard[3][3];
+int UserInput(int *const PtrPlayerRowInput,int *const PtrPlayerColInput){
+    void PtrBoard(int *PlayerMoveRow,int *PlayerMoveCol);
+    // want to pass 2 set of data from UserInput() to PassBoard()
+    int Passboarda;
     
     do{
     /*
@@ -49,7 +50,8 @@ void UserInput(int *const PtrPlayerRowInput,int *const PtrPlayerColInput){
         puts("Player Input Error");
     }
     else{
-        PtrBoard(&Passboard[*PtrPlayerRowInput][*PtrPlayerColInput]);
+        // PtrBoard not accepting Passboard's arguements
+        PtrBoard (&Passboard);
     }
 
     }while(Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] );
