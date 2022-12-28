@@ -18,7 +18,7 @@ void ShowcaseBoard(){
     printf("\n");
 }
 void Board(int BoardChange){
-    char MainBoard[BoardRow][BoardColumn];
+    int MainBoard[BoardRow][BoardColumn];
     printf("  %c | %c  | %c  |",MainBoard[0][0],MainBoard[0][1],MainBoard[0][2]);
     printf("\n -------------\n");
     printf("  %c | %c  | %c  |",MainBoard[1][0],MainBoard[1][1],MainBoard[1][2]);
@@ -33,7 +33,7 @@ void PtrBoard(int *PLayerMove){
     const char PLAYER = 'X';
 }
 // runs first ; reset Board();
-void ResetBoard(){
+int ResetBoard(){
     void Board(int BoardChange);
     char wboard[BoardRow][BoardColumn];
     for(int RowCount=0; RowCount<3; RowCount++){
@@ -42,6 +42,7 @@ void ResetBoard(){
          Board(wboard[RowCount][ColumnCount] = ' ');
         }
     }
+    return 0;
 }
 // affected by GameCondition
 int StartGame(bool(*GameCondition)(int));
@@ -57,17 +58,12 @@ void UserInput(int *const PtrPlayerRowInput,int *const PtrPlayerColInput){
     void resetBoard();
     // pass 2 set of data from UserInput() to PassBoard()
     int Passboard[3][3];
-    //Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] = malloc(BoardRow *sizeof(int) & BoardColumn *sizeof(int));
-    Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] = ' ';
+    Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] = ResetBoard();
     
-    do{
-    if(Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] != ' '){
+   if(Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] == ' '){
         puts("Player Input Error");
-    }
-    else{
-        PtrBoard(&Passboard[*PtrPlayerRowInput][*PtrPlayerColInput]);
-    }
-    }while(Passboard[*PtrPlayerRowInput][*PtrPlayerColInput]);
+   }
+   PtrBoard(&Passboard[*PtrPlayerRowInput][*PtrPlayerColInput]);
 }
 int ComInput(int const *ComRowGenerate,int const *ComColumnGenerate);
 int main(int argc, char **argv){
@@ -76,12 +72,8 @@ int main(int argc, char **argv){
     int GameStatus = 1;
     int UserInputRowMain,UserInputColMain;
     ShowcaseBoard();
-
-    if(GameStatus == 0){
-        puts("You win!");
-        return 0;
-    }
     ResetBoard();
+
     while(GameStatus != 0){
     printf("Please enter a row: ");
     scanf("%d",&UserInputRowMain);
@@ -91,6 +83,8 @@ int main(int argc, char **argv){
     UserInputColMain--;
 
     UserInput(&UserInputRowMain,&UserInputColMain);
-    Board(0);
     }
+
+    puts("You win!");
+    return 0;
 }
