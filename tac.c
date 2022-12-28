@@ -56,15 +56,9 @@ void UserInput(int *const PtrPlayerRowInput,int *const PtrPlayerColInput){
     void PtrBoard(int *PlayerMoveRow);
     void resetBoard();
     // pass 2 set of data from UserInput() to PassBoard()
-    int Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] = malloc(BoardRow *sizeof(int) & BoardColumn *sizeof(int));
-    Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] = 0;
-    // Issues:
-    // Passboard was never reset so get error everytime;
-    // Unable to run resetBoard() on Passboard because Passboard dont know how many times it should run resetBoad();
-    // malloc not working (havent figured out why);
-    
-    // error:
-    // Variable-sized object may not be initialized
+    int Passboard[3][3];
+    //Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] = malloc(BoardRow *sizeof(int) & BoardColumn *sizeof(int));
+    Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] = ' ';
     
     do{
     if(Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] != ' '){
