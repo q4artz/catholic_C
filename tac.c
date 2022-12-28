@@ -50,16 +50,21 @@ int checkFreeSpaces(bool(*BoardCondition)(int)){
     int Board;
 }
 
-// get data from main() , data from main() pass to UserInput(), 
+// get data from main() ,the data from main() pass to UserInput(), 
 // UserInput() pass to int PtrBoard();
 void UserInput(int *const PtrPlayerRowInput,int *const PtrPlayerColInput){
     void PtrBoard(int *PlayerMoveRow);
     void resetBoard();
-    // want to pass 2 set of data from UserInput() to PassBoard()
+    // pass 2 set of data from UserInput() to PassBoard()
     int Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] = malloc(BoardRow *sizeof(int) & BoardColumn *sizeof(int));
     Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] = 0;
+    // Issues:
+    // Passboard was never reset so get error everytime;
+    // Unable to run resetBoard() on Passboard because Passboard dont know how many times it should run resetBoad();
+    // malloc not working (havent figured out why);
     
-    //Passboard was never reset so get error everytime;
+    // error:
+    // Variable-sized object may not be initialized
     
     do{
     if(Passboard[*PtrPlayerRowInput][*PtrPlayerColInput] != ' '){
