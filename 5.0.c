@@ -1,5 +1,3 @@
-// from book how to program C eight edition and youtube
-
 // 5.5.1 square function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~semi-important
 
 /*
