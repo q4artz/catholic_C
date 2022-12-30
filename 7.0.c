@@ -1,5 +1,3 @@
-// from book how to program C eight edition and youtube
-
 // 7.3 Pointer Operatons ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ very important
 
 // & is an address operator
