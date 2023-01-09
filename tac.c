@@ -17,10 +17,9 @@ void ShowcaseBoard(){
     printf("    |   |   |");
     printf("\n");
 }
-void Board(int BoardChange,int *PlayerMove,int *ComputerMove){
-    char MainBoard[4][4];
-    //*PlayerMove = PLAYER;
-    //*PlayerMove = MainBoard[4][4];
+void Board(int BoardChange,int *PlayerMove[][0],int *ComputerMove){
+    char MainBoard[BoardRow][BoardColumn];
+    MainBoard[1][1] = PLAYER;
     //printf("  %c | %c  | %c  |",MainBoard[0][0],MainBoard[0][1],MainBoard[0][2]);
     //printf("\n -------------\n");
     //printf("  %c | %c  | %c  |",MainBoard[1][0],MainBoard[1][1],MainBoard[1][2]);
@@ -30,7 +29,7 @@ void Board(int BoardChange,int *PlayerMove,int *ComputerMove){
 }
 // runs second - reset the board in void Board();
 int ResetBoard(){
-    void Board(int BoardChange,int *PlayerMove,int *ComputerMove);
+    void Board(int BoardChange,int *PlayerMove[][0],int *ComputerMove);
     char wboard[BoardRow][BoardColumn];
     for(int RowCount=0; RowCount<2; RowCount++){
         for(int ColumnCount=0; ColumnCount<2; ColumnCount++){
@@ -46,7 +45,7 @@ int StartGame(bool(*GameCondition)(int));
 // get data from main() ,the data from main() pass to UserInput(), 
 // UserInput() pass to int PtrBoard();
 void UserInput(){
-   void Board(int BoardChange,int *PlayerMove,int *ComputerMove);
+   void Board(int BoardChange,int *PlayerMove[][0],int *ComputerMove);
     // pass 2 set of data from UserInput() to PassBoard()
     int Passboard[3][3];
     int PtrPlayerRowInput,PtrPlayerColInput;
