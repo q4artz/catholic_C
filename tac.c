@@ -7,36 +7,26 @@
 #define BoardRow 3
 #define PLAYER 'X'
 #define COMPUTER 'O'
-// Runs first - showcase an empty board
-void ShowcaseBoard(){
-    int ShowcaseBoard[BoardRow][BoardColumn];
-    printf("    |   |   |");
-    printf("\n");
-    printf("    |   |   |");
-    printf("\n");
-    printf("    |   |   |");
-    printf("\n");
-}
 void Board(int BoardChange,int *PlayerMove[][0],int *ComputerMove){
     char MainBoard[BoardRow][BoardColumn];
-    MainBoard[1][1] = PLAYER;
-    //printf("  %c | %c  | %c  |",MainBoard[0][0],MainBoard[0][1],MainBoard[0][2]);
-    //printf("\n -------------\n");
-    //printf("  %c | %c  | %c  |",MainBoard[1][0],MainBoard[1][1],MainBoard[1][2]);
-    //printf("\n -------------\n");
-    //printf("  %c | %c  | %c  |",MainBoard[2][0],MainBoard[2][1],MainBoard[2][2]);
-    //printf("\n");
+    if(*PlayerMove != " ");
+    printf("  %c | %c  | %c  |",MainBoard[0][0],MainBoard[0][1],MainBoard[0][2]);
+    printf("\n -------------\n");
+    printf("  %c | %c  | %c  |",MainBoard[1][0],MainBoard[1][1],MainBoard[1][2]);
+    printf("\n -------------\n");
+    printf("  %c | %c  | %c  |",MainBoard[2][0],MainBoard[2][1],MainBoard[2][2]);
+    printf("\n");
 }
 // runs second - reset the board in void Board();
 int ResetBoard(){
     void Board(int BoardChange,int *PlayerMove[][0],int *ComputerMove);
-    char wboard[BoardRow][BoardColumn];
+    char wboard[4][4];
     for(int RowCount=0; RowCount<2; RowCount++){
         for(int ColumnCount=0; ColumnCount<2; ColumnCount++){
-         //wboard[RowCount][ColumnCount] = ' ';
-         Board(wboard[RowCount][ColumnCount] = ' ',0,0);
+          wboard[BoardRow][BoardColumn] = ' ';
         }
     }
+    Board(wboard[BoardRow][BoardColumn],0,0);
     return 0;
 }
 // affected by GameCondition
@@ -66,8 +56,8 @@ int main(int argc, char **argv){
     // 0 == win , 1 == Lose , 2 == Draw ;
     int GameStatus = 1;
     int UserInputRowMain,UserInputColMain;
-   ShowcaseBoard();
    ResetBoard();
+   Board(0,0,0);
 
     while(GameStatus != 0){
 
