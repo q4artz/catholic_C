@@ -35,7 +35,7 @@ struct card{
 }aCard,deck[52],*cardPtr;
 */
 
-// 10.3 Initailiing Structures
+// 10.3 Initailiing Structure
 /*
 #include <stdio.h>
 #include <stdlib.h>
@@ -44,7 +44,6 @@ struct card{
     char *face;
     char *suit;
 }aCard,deck[52],*cardPtr; // initailize what variable should hold the struct
-
 struct card aCard = {
     // initializing the struct 
     // the face from *face now is Three in aCard
