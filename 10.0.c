@@ -65,6 +65,7 @@ int main(){
     - pointer 
 */
 
+/*
 #include <stdio.h>
 struct card{
     char *face;
@@ -82,3 +83,18 @@ int main(){
     aCard.face,"of",aCard.suit,cardPtr->face,"of",cardPtr->suit,
     (*cardPtr).face,"of",(*cardPtr).suit);
 }
+*/
+
+// 10.5 Using Structures with Functions
+
+/*
+Structure can only be pass to function by
+    - Individual structure members
+        - passed by value
+    - entire structure
+    - pointer to a structure
+
+    - Arrays are passed by reference
+*/
+
+// 10.6 typedef
