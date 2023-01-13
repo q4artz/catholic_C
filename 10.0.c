@@ -98,3 +98,50 @@ Structure can only be pass to function by
 */
 
 // 10.6 typedef
+
+// typedef replace the Data type with the variable name
+// so like typedef int Student
+// you can call Student and it will represent int
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct{
+    char Name[50];
+    char Gender;
+}Student;
+
+int main(){
+
+    Student James;
+
+}
+*/
+
+// using Struct in a function -------------------------------------------
+
+#include <stdio.h>
+#include<stdlib.h>
+
+typedef struct {
+    char Name[30];
+    char id[10];
+    int age;
+    int grade[];
+}Student;
+
+void Printing_student(Student student){
+    printf("Name is %s\n",student.Name);
+    printf("ID is %s\n",student.id);
+    printf("Age is %d\n",student.age);
+    printf("Grades is ");
+    for(int i=0;i<=5;i++){
+        printf("%d",student.grade[i]);
+        printf("\n");
+    };
+}
+int main(){
+    Printing_student();
+}
+
+
