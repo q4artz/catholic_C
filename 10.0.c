@@ -97,7 +97,7 @@ Structure can only be pass to function by
     - Arrays are passed by reference
 */
 
-// 10.6 typedef
+// 10.6 typedef ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // typedef replace the Data type with the variable name
 // so like typedef int Student
@@ -120,14 +120,17 @@ int main(){
 
 // using Struct in a function -------------------------------------------
 
+/*
 #include <stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
+// typedef require us to only declear main structure one time
 typedef struct {
     char Name[30];
     char id[10];
     int age;
-    int grade[];
+    int grade[5];
 }Student;
 
 void Printing_student(Student student){
@@ -136,12 +139,68 @@ void Printing_student(Student student){
     printf("Age is %d\n",student.age);
     printf("Grades is ");
     for(int i=0;i<=5;i++){
-        printf("%d",student.grade[i]);
-        printf("\n");
+        printf("\n%d",student.grade[i]);
     };
 }
 int main(){
-    Printing_student();
+    // we then can use the decleared struct to assign to other struct
+    Student James;
+
+    strcpy(James.Name,"Jamess");
+    strcpy(James.id,"0120312");
+    James.age = 12;
+    for (int grade=1;grade<=5;grade++)
+        James.grade[grade] = grade;
+    
+    
+    Printing_student(James);
 }
+*/
 
+// another way to declear structure members
 
+/*
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct{
+    int x;
+    int y;
+}Pointing;
+
+int main(){
+    // declear struct in curly braces
+    Pointing p1 = {4,6};
+
+    // or we can write out the full thing 
+    Pointing p2 = {.x=10,.y=20};
+}
+*/
+
+// Array structures 
+
+/*
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct{
+    int x;
+    int y;
+}Pointing;
+
+int main(){
+    Pointing point[10];
+
+    for (int i=0;i<10;i++){
+        point[i].x = i;
+        point[i].y = i-1;
+    }
+    for(int i=0;i<10;i++){
+        printf("p%d =(%d,%d)\n",
+        // print the struct point at x's / y's value i 
+        i,point[i].x,point[i].y);
+    }
+}
+*/
+
+// Pointer Structure
