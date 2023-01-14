@@ -204,3 +204,41 @@ int main(){
 */
 
 // Pointer Structure
+
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct{
+    int *array;
+}Pointers;
+
+int main(){
+    Pointers One,Two;
+
+    // dynamic alloc mem
+    One.array = malloc(sizeof(int)*5);
+    Two.array = malloc(sizeof(int)*5);
+
+    One.array[0] = 1;
+     One.array[1] = 2;
+      One.array[2] = 3;
+       One.array[3] = 4;
+        One.array[4] = 1;
+         One.array[5] = 9;
+
+    Two.array[0] = 9;
+     Two.array[1] = 9;
+     Two.array[2] = 9;
+     Two.array[3] = 9;
+     Two.array[4] = 9;
+     Two.array[5] = 3;
+
+    // assignment copies the memory of Two.array to One.array
+    One.array = Two.array;
+
+    for(int i=0;i<5;i++)
+        printf("One array = %d\n",One.array[i]);
+    puts("\n");
+    for(int i=0;i<5;i++)
+         printf("Two array = %d\n",Two.array[i]);
+}
