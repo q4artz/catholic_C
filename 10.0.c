@@ -85,17 +85,17 @@ int main(){
 }
 */
 
-// 10.5 Using Structures with Functions
+// 10.5 Using Structures with Functions !!!!!!! Important !!!!
 
-/*
-Structure can only be pass to function by
-    - Individual structure members
-        - passed by value
-    - entire structure
-    - pointer to a structure
 
-    - Arrays are passed by reference
-*/
+// Structure can only be pass to function by
+//    - Individual structure members
+//        - passed by value
+//    - entire structure
+//    - pointer to a structure
+
+//    - Arrays are passed by reference
+
 
 // 10.6 typedef ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -233,8 +233,10 @@ int main(){
      Two.array[3] = 9;
      Two.array[4] = 9;
      Two.array[5] = 3;
-
-    // assignment copies the memory of Two.array to One.array
+     
+    // assignment operator only assign the MEMORY ADDR of struct
+    // not he value of struct; 
+    // so we will get the result of One.array all retuning 9
     One.array = Two.array;
 
     for(int i=0;i<5;i++)
@@ -244,3 +246,29 @@ int main(){
          printf("Two array = %d\n",Two.array[i]);
 }
 */
+
+// 10.8 Unions -----------------------------------------------------------------------
+
+/*
+  - Union is also a derived data type
+  - but only with members that share the same storage space
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef union{
+    char Gen;
+    int x;
+}number;
+
+int main(){
+    number One ={
+        // with union you can only 
+        // initialize with a value of the same type as the first union member
+        // so we cant initialize x here
+        67
+    };
+
+    printf("Number one is %c\t%d\n",One.Gen,One.x);
+}
