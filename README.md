@@ -5,7 +5,7 @@ chapters to complete
 - 7 pointers -done - 08/11/2022
 - 8 charcters and string
 - 9 formatted input and output
-- 10 struct,unions,bit manipulation,enum -WIP
+- 10 struct,unions,bit manipulation,enum -done - 16/01/2023
 - 11 file processing
 --------------------------------------------------
 small projects
