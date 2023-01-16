@@ -24,19 +24,19 @@ struct company{
 */
 
 //10.2.2 Defining Variables of structure types
-/*
+
 // ((we can declear a variable to the the type of the struct))
 // currently idk what it is for but i plan to find out soon
-#include <stdio.h>
-#include <stdlib.h>
-struct card{
-    char *face;
-    char *suit;
-}aCard,deck[52],*cardPtr;
-*/
+// #include <stdio.h>
+// #include <stdlib.h>
+// struct card{
+//     char *face;
+//     char *suit;
+// }aCard,deck[52],*cardPtr;
+
 
 // 10.3 Initailiing Structure
-/*
+
 #include <stdio.h>
 #include <stdlib.h>
 struct card{
@@ -51,10 +51,10 @@ struct card aCard = {
     // the *suit from *suit now is Hearts in aCard
     "Hearts"
 };
-int main(){
-    printf("%s\n",aCard.suit);
-}
-*/
+// int main(){
+//     printf("%s\n",aCard.suit);
+// }
+
 
 // 10.4 Accessing Structure Members with . and -> 
 /*
@@ -297,11 +297,66 @@ typedef struct{
     int y : 2;
 }Numbers;
 
-int main(){
-    Numbers one = {
-        1,
-        1
-    };
+// int main(){
+//     Numbers one = {
+//         1,
+//         1
+//     };
+// 
+//     printf("Number = %d\n%d\n",one.x,one.y);
+// };
 
-    printf("Number = %d\n%d\n",one.x,one.y);
+// 10.10.3 Unnamed Bit Fields
+
+/*
+    Used as padding in the struct
+*/
+
+#include <stdio.h>
+
+typedef struct{
+    unsigned int a : 13;
+// unnamed 19-bit field is a padding
+// nothing can be sotred in these 19 bits
+    unsigned int   : 19;
+    unsigned int b :  4;
+}example;
+
+
+// 10.11 Enumeration Constants
+
+enum months {
+    JAN =1,FEB=3,MAR=2,APR
 };
+//  Output
+//  JAN output 1
+//  FEB output 3
+//  MAR output 2
+//  APR output 4
+
+// 10.12 Anonymous Structure and Unions
+
+typedef struct{
+    int member1;
+    int member2;
+    struct{
+        int NestedMember1;
+        int NestedMember2;
+    }Nested;
+}Outter;
+
+int main(){
+    Outter Variable ={
+        1,
+        2,
+        3,
+        4
+    };
+    printf("Outter vairable = %d\n%d\n%d\n%d\n"
+    ,Variable.member1
+    ,Variable.member2
+    ,Variable.Nested.NestedMember1
+    ,Variable.Nested.NestedMember2);
+}
+
+// done?
