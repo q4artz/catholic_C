@@ -1,3 +1,7 @@
+/* Potential bugs
+    - animals that sliped below 0 should not display negative integer
+        - able to fix by adding a function that checks it?
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -7,21 +11,23 @@
 int Hare(int *HarePosition);
 int Tortoise(int *TortoisePosition);
 int GameCondition(int *HarePosition,int *TortoisePosition);
-int timer();
 
 int main(int argc,char *argv[]){
-    int TortoisePosition=1,HarePosition=1,clock=1,Condition=0;
+    int TortoisePosition=0,HarePosition=0,clock=0,Condition=0;
     srand(time(NULL));
 
     puts("Race Start!!\n");
 
    do{
-        clock = clock + timer();
+        // count the amount of turns
+        ++clock;
         printf("\nTime is now %d !!\n",clock);
 
+        // Position is initialized to 0 and pass to Their own functions 
         HarePosition = Hare(&HarePosition);
         TortoisePosition = Tortoise(&TortoisePosition);
 
+        // checks if any of the animals has gone over 70
         Condition = GameCondition(&HarePosition,&TortoisePosition);
     }while(Condition == 0);
 
@@ -37,6 +43,8 @@ int Hare(int *HarePosition){
     int Haremove =0;
     int hare = *HarePosition;
     Haremove = rand() % 10+1;
+    if(hare < 0)
+        hare =0;
    if (Haremove >= 3 && Haremove <= 4){
        hare += 9;
        puts("Hare Hopped 9 squares!!!");
@@ -55,16 +63,14 @@ int Hare(int *HarePosition){
    }
    else 
        puts("hare Slept?????");
-    if(hare < 0)
-        hare =0;
    printf("Hare is now at %d!\n",hare);
     return hare;
 };
 int Tortoise(int *TortoisePosition){
     int tortoise = *TortoisePosition;
     int TortoiseMove = 0;
-    enum GameCondition;
-
+    if(tortoise < 0)
+        tortoise = 0;
     TortoiseMove = rand() % 10+1;
     if (TortoiseMove >= 1 && TortoiseMove <= 5){
         tortoise += 3;
@@ -75,8 +81,6 @@ int Tortoise(int *TortoisePosition){
         puts("Tortoise Sliped 6 squares!!");
     }
     printf("Tortoise is now at %d!\n",tortoise); 
-    if(tortoise < 0)
-        tortoise = 0;
     return tortoise;
 };
 int GameCondition(int *HarePosition,int *TortoisePosition){
@@ -90,9 +94,4 @@ int GameCondition(int *HarePosition,int *TortoisePosition){
         return 2;
      }
      else return 0;
-};
-int timer(){
-    int timer =0;
-    timer++;
-    return timer;
 };
