@@ -11,3 +11,4 @@ chapters to complete
 small projects
 - 7.6_twist.c   -done(30/10/22)
 - tac.c         -WIP(9/11/2022)
+- Tortoise_and_The_hare -done(16/01/2023)
