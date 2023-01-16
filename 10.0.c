@@ -233,7 +233,7 @@ int main(){
      Two.array[3] = 9;
      Two.array[4] = 9;
      Two.array[5] = 3;
-     
+
     // assignment operator only assign the MEMORY ADDR of struct
     // not he value of struct; 
     // so we will get the result of One.array all retuning 9
@@ -254,6 +254,7 @@ int main(){
   - but only with members that share the same storage space
 */
 
+/*
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -272,3 +273,35 @@ int main(){
 
     printf("Number one is %c\t%d\n",One.Gen,One.x);
 }
+*/
+
+// 10.10 Bit Field (fun) ---------------------------------------------------------------------------
+
+/*
+    A series of bits ( lets say int has 32 bits)
+    instead of it taking 32 bits we can add more 
+    stuff into individual bits.
+
+        -- Bit field manipulation are machine dependent
+        -- but it helps reduce the amount of memory a program needs
+        -- Might cause compiler to generate slower-executing machine code
+            , it takes etra machine lang operations to access only portions
+                 of addressable storage unit
+                    an example of space-time trade-offs 
+*/
+
+#include <stdio.h>
+
+typedef struct{
+    int x : 1;
+    int y : 2;
+}Numbers;
+
+int main(){
+    Numbers one = {
+        1,
+        1
+    };
+
+    printf("Number = %d\n%d\n",one.x,one.y);
+};
