@@ -1,7 +1,3 @@
-/* Potential bugs
-    - animals that sliped below 0 should not display negative integer
-        - able to fix by adding a function that checks it?
-*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -25,7 +21,9 @@ int main(int argc,char *argv[]){
 
         // Position is initialized to 0 and pass to Their own functions 
         HarePosition = Hare(&HarePosition);
+             printf("Hare is now at %d!\n",HarePosition);
         TortoisePosition = Tortoise(&TortoisePosition);
+            printf("Tortoise is now at %d!\n",TortoisePosition); 
 
         // checks if any of the animals has gone over 70
         Condition = GameCondition(&HarePosition,&TortoisePosition);
@@ -33,7 +31,7 @@ int main(int argc,char *argv[]){
 
    if(Condition == 1)
         puts("Hare won");
-   if(Condition == 2)
+   else
     puts("Tortoise won");
     
 return 0;
@@ -43,8 +41,7 @@ int Hare(int *HarePosition){
     int Haremove =0;
     int hare = *HarePosition;
     Haremove = rand() % 10+1;
-    if(hare < 0)
-        hare =0;
+   // printf("rolled %d",Haremove);
    if (Haremove >= 3 && Haremove <= 4){
        hare += 9;
        puts("Hare Hopped 9 squares!!!");
@@ -53,26 +50,26 @@ int Hare(int *HarePosition){
        hare -= 12;
        puts("Hare Sliped 12 squares!!");
    }
-   else if( Haremove >= 6 && Haremove <= 8){
+   else if(Haremove <= 8){
        hare += 1;
        puts("Hare Hopped 1 squares!!");
    }
-   else if(Haremove >= 9 && Haremove >= 10){
+   else if(Haremove >= 9){
        hare -= 2;
        puts("Hare Sliped 2 squares!!");
    }
    else 
        puts("hare Slept?????");
-   printf("Hare is now at %d!\n",hare);
+    if(hare < 0)
+        hare =0;
     return hare;
 };
 int Tortoise(int *TortoisePosition){
     int tortoise = *TortoisePosition;
     int TortoiseMove = 0;
-    if(tortoise < 0)
-        tortoise = 0;
     TortoiseMove = rand() % 10+1;
-    if (TortoiseMove >= 1 && TortoiseMove <= 5){
+    //printf("Rolled %d",TortoiseMove);
+    if (TortoiseMove <= 5){
         tortoise += 3;
         puts("Tortoise plod 3 squares!!");
     }
@@ -80,18 +77,23 @@ int Tortoise(int *TortoisePosition){
         tortoise -= 6;
         puts("Tortoise Sliped 6 squares!!");
     }
-    printf("Tortoise is now at %d!\n",tortoise); 
+    else if(TortoiseMove >= 8){
+        tortoise -= 1;
+        puts("Tortoise Sliped 1 square!!");
+    }
+    if(tortoise < 0)
+        tortoise = 0;
     return tortoise;
 };
 int GameCondition(int *HarePosition,int *TortoisePosition){
     // 0 == ongoing ; 1 == Hare ; 2 == Tortoise
-    int GameStatus =0;
     int hare = *HarePosition,tortoise = *TortoisePosition;
-     if(hare > 70){
+     if(hare > track){
         return 1;
      }
-     else if(tortoise > 70){
+     else if(tortoise > track){
         return 2;
      }
-     else return 0;
+     else 
+        return 0;
 };
