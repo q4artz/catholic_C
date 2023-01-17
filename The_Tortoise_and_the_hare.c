@@ -21,7 +21,7 @@ int main(int argc,char *argv[]){
 
         // Position is initialized to 0 and pass to Their own functions 
         HarePosition = Hare(&HarePosition);
-             printf("Hare is now at %d!\n",HarePosition);
+            printf("Hare is now at %d!\n",HarePosition);
         TortoisePosition = Tortoise(&TortoisePosition);
             printf("Tortoise is now at %d!\n",TortoisePosition); 
 
@@ -41,25 +41,30 @@ int Hare(int *HarePosition){
     int Haremove =0;
     int hare = *HarePosition;
     Haremove = rand() % 10+1;
-   // printf("rolled %d",Haremove);
-   if (Haremove >= 3 && Haremove <= 4){
-       hare += 9;
-       puts("Hare Hopped 9 squares!!!");
+   switch(Haremove){
+    case 1:
+    case 2:
+     puts("hare Slept?????");
+    break;
+    case 3:
+    case 4:
+        hare += 9;
+        puts("Hare Hopped 9 squares!!!");
+    break;
+    case 5:
+        hare -= 12;
+        puts("Hare Sliped 12 squares!!");
+    break;
+    case 6:
+    case 7:
+    case 8:
+        hare += 1;
+        puts("Hare Hopped 1 squares!!");
+    break;
+    default:
+        hare -= 2;
+        puts("Hare Sliped 2 squares!!");
    }
-   else if(Haremove == 5){
-       hare -= 12;
-       puts("Hare Sliped 12 squares!!");
-   }
-   else if(Haremove <= 8){
-       hare += 1;
-       puts("Hare Hopped 1 squares!!");
-   }
-   else if(Haremove >= 9){
-       hare -= 2;
-       puts("Hare Sliped 2 squares!!");
-   }
-   else 
-       puts("hare Slept?????");
     if(hare < 0)
         hare =0;
     return hare;
@@ -73,11 +78,11 @@ int Tortoise(int *TortoisePosition){
         tortoise += 3;
         puts("Tortoise plod 3 squares!!");
     }
-    else if(TortoiseMove >= 6 && TortoiseMove <= 7){
+    else if(TortoiseMove <= 7){
         tortoise -= 6;
         puts("Tortoise Sliped 6 squares!!");
     }
-    else if(TortoiseMove >= 8){
+    else{
         tortoise -= 1;
         puts("Tortoise Sliped 1 square!!");
     }
