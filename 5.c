@@ -1,3 +1,5 @@
+// from book how to program C eight edition and youtube
+
 // 5.5.1 square function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~semi-important
 
 /*
@@ -209,7 +211,7 @@ int main(){
     }
 }
 int usernum(int *Pnum1,int *Pnum2){
-    puts("please enter two numbers");
+    puts("enter two numbers");
     scanf("%d%d",&*Pnum1,&*Pnum2);
     printf("number entered %d + %d = %d\n",*Pnum1,*Pnum2,*Pnum1+*Pnum2);
     return *Pnum1 + *Pnum2;

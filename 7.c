@@ -1,3 +1,5 @@
+// from book how to program C eight edition and youtube
+
 // 7.3 Pointer Operatons ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ very important
 
 // & is an address operator
@@ -18,7 +20,6 @@ int main(){
     printf("y is %d\n&y is %d\nyPtr is %d\n*yPtr is %d\n",y,&y,yPtr,*yPtr);
 }
 */
-
 /* 
 ->> RECAP ~ because we assign yPtr to the address of y, 
     when we use the dereference operator *,
@@ -900,7 +901,7 @@ int descending(int a, int b){
 //  !!!!! Function pointers are function 
 //  to INSTRUCTION not DATA
 
-/*
+
 #include<stdio.h>
 #include <stdbool.h>
 double add(double x,double y){
@@ -1009,4 +1010,4 @@ int main(){
     is_freezing(freeze_C);
     is_freezing(freeze_C); 
 }
-*/
+
