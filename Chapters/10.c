@@ -39,6 +39,7 @@ struct company{
 
 #include <stdio.h>
 #include <stdlib.h>
+#pragma warning(disable:4996)
 struct card{
     // initialize what each struct should have inside
     char *face;
@@ -67,6 +68,7 @@ struct card aCard = {
 
 /*
 #include <stdio.h>
+#pragma warning(disable:4996)
 struct card{
     char *face;
     char *suit;
@@ -106,6 +108,7 @@ int main(){
 /*
 #include <stdio.h>
 #include <stdlib.h>
+#pragma warning(disable:4996)
 typedef struct{
     char Name[50];
     char Gender;
@@ -124,6 +127,7 @@ int main(){
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#pragma warning(disable:4996)
 
 // typedef require us to only declear main structure one time
 typedef struct {
@@ -162,6 +166,7 @@ int main(){
 /*
 #include<stdio.h>
 #include<stdlib.h>
+#pragma warning(disable:4996)
 
 typedef struct{
     int x;
@@ -208,6 +213,7 @@ int main(){
 /*
 #include<stdio.h>
 #include<stdlib.h>
+#pragma warning(disable:4996)
 
 typedef struct{
     int *array;
@@ -257,6 +263,7 @@ int main(){
 /*
 #include <stdio.h>
 #include <stdlib.h>
+#pragma warning(disable:4996)
 
 typedef union{
     char Gen;
@@ -290,7 +297,9 @@ int main(){
                     an example of space-time trade-offs 
 */
 
+/*
 #include <stdio.h>
+#pragma warning(disable:4996)
 
 typedef struct{
     int x : 1;
@@ -306,14 +315,17 @@ typedef struct{
 //     printf("Number = %d\n%d\n",one.x,one.y);
 // };
 
+*/
+
 // 10.10.3 Unnamed Bit Fields
 
 /*
     Used as padding in the struct
 */
 
+/*
 #include <stdio.h>
-
+#pragma warning(disable:4996)
 typedef struct{
     unsigned int a : 13;
 // unnamed 19-bit field is a padding
@@ -358,5 +370,77 @@ int main(){
     ,Variable.Nested.NestedMember1
     ,Variable.Nested.NestedMember2);
 }
+*/
 
-// thats all?
+// Nested Struct ----------------------------------
+
+#include <stdio.h>
+#pragma warning(disable:4996)
+/*
+struct name {
+    int john1;
+};
+typedef struct {
+    int age;
+}age;
+typedef struct{
+    int thing1;
+    int thing2;
+    // entire struct must be written 
+    struct name SName;
+    age Age1;
+}movie;
+*/
+
+typedef struct {
+    int name;
+}MovieData;
+
+typedef struct{
+    char theirname[20];
+}John,Mike;
+
+typedef struct{
+    // movie now has the variable from MovieData
+    MovieData movie;
+    /*
+    movie becomes 
+    struct movie{
+        // with the variable of MovieData
+        int name;
+    }
+    */
+    // The struct that wanted to be used again in another struct need to be declear before the structrue
+    John name;
+    /*
+    // name structure now has the the variables from John structure
+    struct name{
+        char theirname[20];
+    } 
+    */
+}movieanem; 
+
+typedef struct{
+    movieanem Person1;
+    // Person1 now has the whole movieanem's variable including the structure
+    /*
+    struct Person1{
+        int name;
+        char theirname[20]
+    }
+    */
+}Person;
+
+int main(){
+   //  struct name SName = {12};
+   //  age Age1 = {10};
+   movieanem movie ={
+        12,
+        "somthing"
+   };
+   Person person1 ={
+        12,
+        "theriname"
+   };
+}
+
